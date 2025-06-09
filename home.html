@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COGYOK - COGMERS Messianic Youth</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3a86ff;
-            --primary-dark: #2667cc;
-            --secondary: #0a1f3d;
+            --primary: rgb(9, 176, 206);
+            --primary-dark: #1a6a7e;
+            --secondary: rgb(2, 29, 39);
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --border-radius: 8px;
+            --border-radius: 30px;
             --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             --transition: all 0.3s ease;
         }
@@ -28,7 +30,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: "Exo 2", sans-serif;
             color: var(--dark);
             background-color: #fff;
             line-height: 1.6;
@@ -36,7 +38,7 @@
         }
 
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+            font-family: "Exo 2", sans-serif;
             font-weight: 600;
             line-height: 1.3;
         }
@@ -145,10 +147,11 @@
             width: 100%;
             padding: 15px 0;
             display: flex;
+            font-family: "Exo 2", sans-serif;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background-color: rgba(10, 31, 61, 0.9);
+            background-color: rgb(2, 29, 39);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -206,7 +209,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 90%;
     display: flex;
     transition: transform 1s ease-in-out;
 }
@@ -295,7 +298,7 @@
 .hero-title {
     font-size: 3rem;
     margin-bottom: 15px;
-    color: white; /* Already white, keeping for clarity */
+    color: rgb(9, 176, 206); /* Already white, keeping for clarity */
     transform: translateX(-50px);
     opacity: 0;
     transition: all 0.6s ease 0.4s;
@@ -546,243 +549,124 @@
             font-size: 1.2rem;
             margin-top: 3px;
         }
-
-        /* Weekly Quote */
-        .weekly-quote {
-            background-color: var(--secondary);
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .quote-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .quote-text {
-            font-size: 1.5rem;
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            position: relative;
-        }
-
-        .quote-text::before,
-        .quote-text::after {
-            content: '"';
-            font-size: 2rem;
-            color: var(--primary);
-            opacity: 0.5;
-        }
-
-        .quote-text::before {
-            margin-right: 10px;
-        }
-
-        .quote-text::after {
-            margin-left: 10px;
-        }
-
-        .quote-reference {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* Blog Section */
-        .blog {
-            padding: 80px 0;
-        }
-
-        .blog-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .blog-posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .blog-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-image {
-            height: 220px; /* Slightly taller image for better overlap */
-            overflow: hidden;
-            border-radius: 10px;
-            position: relative; /* Needed for z-index context */
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100.#;
-            object-fit: cover;
-            transition: var(--transition);
-            display: block;
-        }
-
-        .blog-card:hover .blog-image img {
-            transform: scale(1.1);
-        }
-
-/* Blog Content Centering - Only Change */
-.blog-content {
-    width: 330px;
-    position: relative;
-    margin: -60px auto 0; /* Changed to center horizontally */
-    padding: 20px;
-    box-shadow: var(--box-shadow);
-    padding-top: 80px;
-    background-color: white;
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
-    z-index: 10;
-}
-        .blog-date {
-            font-size: 0.8rem;
-            color: var(--gray);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .blog-date i {
-            margin-right: 5px;
-            color: var(--primary);
-        }
-
-        .blog-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--secondary);
-        }
-
-        .blog-excerpt {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--light);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .about-text {
-            font-size: 0.95rem;
-            color: var(--gray);
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-        }
-
-        .about-image {
-            width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-        }
-
-/* Events Section */
-.events-grid {
+        .events-list-rect {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Matched blog-posts grid */
-    gap: 30px; /* Matched blog-posts gap */
+    grid-template-columns: 1fr;
+    gap: 28px;
 }
-
-.event-card {
-    background-color: white;
-    border-radius: var(--border-radius);
+.event-rect {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     overflow: hidden;
-    transition: var(--transition);
+    transition: box-shadow 0.22s cubic-bezier(.4,2,.3,1), transform 0.22s cubic-bezier(.4,2,.3,1);
+    cursor: pointer;
+    touch-action: manipulation;
+    will-change: box-shadow, transform;
 }
-
-.event-card:hover {
-    transform: translateY(-5px);
-    /* Removed box-shadow here to match blog-card hover,
-       the content's box-shadow will provide the lift effect */
+.event-rect:hover,
+.event-rect:active {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.11);
+    transform: translateY(-2px) scale(1.008);
 }
-
-.event-image {
-    height: 220px; /* Matched blog-image height */
-    overflow: hidden;
-    border-radius: 10px; /* Matched blog-image border-radius */
-    position: relative;
+.event-rect-img {
+    width: 100%;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 18px 18px 0 0;
+    object-fit: cover;
     display: block;
-    width: 100%; /* Ensure image fills its container */
-    object-fit: cover; /* Ensure image covers the area without distortion */
-    transition: var(--transition);
+    transition: border-radius 0.2s;
+    box-shadow: none;
 }
-
-.event-card:hover .event-image {
-    transform: scale(1.1); /* Matched blog-card hover image scale */
+.event-rect-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 18px 22px 22px 22px;
+    min-width: 0;
 }
-
-.event-details {
-    /* Matched blog-content styling */
-    width: 300px; /* Explicit width to match blog card's overlapping content */
-    position: relative;
-    margin: -60px auto 0; /* Centered horizontally and pulled up for overlap */
-    padding: 20px;
-    padding-top: 80px; /* Adjust padding to accommodate overlap */
-    background-color: white;
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); /* Shadow for overlap effect */
-    z-index: 10;
+.event-rect-title {
+    font-size: 1.1rem;
+    color: var(--secondary);
+    margin-bottom: 6px;
+    font-family: "Exo 2", sans-serif;
+    font-weight: 600;
 }
-
-/* Responsive adjustments for events-grid to match blog-content */
-@media (max-width: 768px) {
-    .event-details {
-        padding-top: 60px; /* Less overlap on smaller screens, matched blog-content */
-        margin-top: -40px; /* Adjusted margin-top to match blog-content */
+.event-rect-date {
+    font-size: 0.95rem;
+    color: var(--primary-dark);
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.event-rect-date i {
+    color: var(--primary);
+    margin-right: 5px;
+}
+.event-rect-desc {
+    color: var(--gray);
+    font-size: 0.97rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    max-width: 420px;
+}
+.event-rect-btn {
+    align-self: flex-start;
+    font-size: 0.93rem;
+    padding: 7px 18px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+@media (min-width: 900px) {
+    .events-list-rect {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+    .event-rect-img {
+        height: 170px;
+        border-radius: 18px 18px 18px 18px;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
     }
 }
-
-@media (max-width: 576px) {
-    .event-image {
-        height: 180px; /* Matched blog-image height on very small screens */
+@media (max-width: 700px) {
+    .events-list-rect {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+   .event-rect {
+    -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight on mobile */
+    outline: none; /* Remove focus outline */
+}
+.event-rect:focus {
+    outline: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.11); /* Keep only your custom shadow */
+}
+    .event-rect-img {
+        width: 100%;
+        height: 160px;
+        border-radius: 18px 18px 18px 18px;
+        object-fit: cover;
+        background-position: center bottom;
+        display: block;
+    }
+    .event-rect-content {
+        padding: 14px 10px 18px 10px;
+        border-radius: 0 0 18px 18px;
     }
 }
-
-        /* Ministries Section */
-        .ministries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        /* Ministries cards use .event-card and .event-image, so their styles apply */
-
-
         /* Footer */
         footer {
-            background-color: var(--secondary);
+            background-color: rgb(2, 29, 39);
             color: white;
             padding: 60px 0 30px;
         }
@@ -799,7 +683,7 @@
             color: white;
             margin-bottom: 20px;
             display: block;
-            font-family: 'Playfair Display', serif;
+            font-family: "Exo 2", sans-serif;
         }
 
         .footer-logo span {
@@ -922,19 +806,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .quote-text {
-                font-size: 1.2rem;
-            }
-
-            /* Adjust padding for smaller screens if needed for overlap */
-            .blog-content {
-                padding-top: 60px; /* Less overlap on smaller screens */
-                margin-top: -40px;
-            }
-            .event-details {
-                padding-top: 60px; /* Less overlap on smaller screens */
-                margin-top: -40px;
-            }
+           
         }
 
         @media (max-width: 576px) {
@@ -954,12 +826,17 @@
                 font-size: 0.9rem;
             }
 
-            .blog-image {
-                height: 180px; /* Adjust image height if desired on very small screens */
-            }
-            .event-image {
-                height: 150px;
-            }
+            /* Updated hero-bg-container for slide animation */
+.hero-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
         }
     </style>
 </head>
@@ -1073,157 +950,57 @@
             </div>
         </div>
     </section>
-
-    <section class="weekly-quote">
-        <div class="quote-container">
-            <div class="quote-text" id="weeklyQuote">
-                "For I am not ashamed of the Good News of Messiah, for it is the power of Elohim for deliverance to everyone who believes, to the Jew first and also to the Greek."
+<section class="events section" id="events">
+    <div class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-list-rect">
+            <!-- Event 1 -->
+            <div class="event-rect">
+                <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="event-rect-content">
+                    <h3 class="event-rect-title">Shabbat Gathering</h3>
+                    <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> June 15, 2025</div>
+                    <p class="event-rect-desc">
+                        Join us for a joyful Shabbat celebration with worship, Torah reading, and fellowship. All youth welcome!
+                    </p>
+                    <a href="#" class="btn event-rect-btn">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            <div class="quote-reference">Romans 1:16 (TS2009)</div>
-        </div>
-    </section>
-
-    <section id="blog" class="blog section">
-        <div class="container">
-            <div class="blog-header">
-                <h2 class="section-title">Latest Blog Posts</h2>
-                <a href="#" class="btn btn-outline">View All</a>
+            <!-- Event 2 -->
+            <div class="event-rect">
+                <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="event-rect-content">
+                    <h3 class="event-rect-title">Youth Retreat</h3>
+                    <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> July 20-22, 2025</div>
+                    <p class="event-rect-desc">
+                        A weekend of adventure, worship, and spiritual growth in the great outdoors. Register now—spaces are limited!
+                    </p>
+                    <a href="#" class="btn event-rect-btn">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            
-            <div class="blog-posts">
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Bible study">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="far fa-calendar-alt"></i> June 15, 2024</div>
-                        <h3 class="blog-title">Discovering Yahshua in the Torah</h3>
-                        <p class="blog-excerpt">Explore how the Torah points to Messiah and what that means for believers today as we walk in obedience to Scripture.</p>
-                        <a href="#" class="btn">Read More</a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Shabbat gathering">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="far fa-calendar-alt"></i> June 8, 2024</div>
-                        <h3 class="blog-title">The Blessing of Shabbat Rest</h3>
-                        <p class="blog-excerpt">Learn how observing the Sabbath can transform your spiritual life and bring you closer to the Creator.</p>
-                        <a href="#" class="btn">Read More</a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Summer camp">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date"><i class="far fa-calendar-alt"></i> June 1, 2024</div>
-                        <h3 class="blog-title">Summer Camp Testimonies</h3>
-                        <p class="blog-excerpt">Hear from our youth about their life-changing experiences at our annual summer retreat in the mountains.</p>
-                        <a href="#" class="btn">Read More</a>
-                    </div>
-                </article>
+            <!-- Event 3 -->
+            <div class="event-rect">
+                <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1515168833906-d2a3b82b3029?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="event-rect-content">
+                    <h3 class="event-rect-title">Community Outreach</h3>
+                    <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> August 10, 2025</div>
+                    <p class="event-rect-desc">
+                        Serve with us as we share love and practical help with our neighbors. All hands and hearts needed!
+                    </p>
+                    <a href="#" class="btn event-rect-btn">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="about" class="about section">
-        <div class="container">
-            <h2 class="section-title">Our Story</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>COGYOK (COGMERS Youth of the Kingdom) was founded in 2010 as the youth ministry of Commonwealth of Greater Messianic Evangelical Restoration Synagogue (COGMERS). Our mission is to raise up a generation of young believers who love Yahshua Messiah and walk in obedience to the Torah.</p>
-                    <p>We believe in the restoration of all things and that the covenants, commandments, and promises of Scripture are for all believers today. Our youth gather weekly to study Scripture, worship in Spirit and truth, and encourage one another in the faith.</p>
-                    <p>Our name COGYOK reflects our identity as youth (YOK) belonging to COGMERS, called to be set apart for the Kingdom. We emphasize both our Messianic faith and our commitment to the Great Commission.</p>
-                    <a href="#" class="btn">Meet Our Leaders</a>
-                </div>
-                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Youth group serving" class="about-image">
-            </div>
-        </div>
-    </section>
-
-    <section id="events" class="section">
-        <div class="container">
-            <h2 class="section-title">Upcoming Events</h2>
-            <p class="text-center" style="margin-bottom: 40px; color: var(--gray);">Join us for these special gatherings</p>
-            
-            <div class="events-grid">
-                <div class="event-card">
-                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Shabbat gathering" class="event-image">
-                    <div class="event-details">
-                        <div class="event-date"><i class="far fa-calendar-alt"></i> Every Friday at 7PM</div>
-                        <h3 class="event-title">Shabbat Live</h3>
-                        <p class="event-description">Our weekly gathering to welcome the Sabbath with worship, teaching, and fellowship.</p>
-                        <a href="#" class="btn">Details</a>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Bible study" class="event-image">
-                    <div class="event-details">
-                        <div class="event-date"><i class="far fa-calendar-alt"></i> Every Tuesday at 6PM</div>
-                        <h3 class="event-title">Torah Study</h3>
-                        <p class="event-description">In-depth study of the weekly Torah portion and its connection to Yahshua Messiah.</p>
-                        <a href="#" class="btn">Details</a>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Summer camp" class="event-image">
-                    <div class="event-details">
-                        <div class="event-date"><i class="far fa-calendar-alt"></i> July 15-20, 2024</div>
-                        <h3 class="event-title">Summer Camp</h3>
-                        <p class="event-description">Annual summer retreat with worship, teaching, and outdoor activities in the mountains.</p>
-                        <a href="#" class="btn">Register</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center" style="margin-top: 40px;">
-                <a href="#" class="btn btn-outline">View All Events</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="ministries" class="section">
-        <div class="container">
-            <h2 class="section-title">Our Ministries</h2>
-            <p class="text-center" style="margin-bottom: 40px; color: var(--gray);">Ways to get involved</p>
-            
-            <div class="ministries-grid">
-                <div class="event-card">
-                    <img src="https://images.unsplash.com/photo-1542403779-5f47710f4bf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Worship team" class="event-image">
-                    <div class="event-details">
-                        <h3 class="event-title">Worship Team</h3>
-                        <p class="event-description">Join our team of musicians and singers who lead worship at our gatherings.</p>
-                        <a href="#" class="btn">Join Team</a>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Youth group serving" class="event-image">
-                    <div class="event-details">
-                        <h3 class="event-title">Community Outreach</h3>
-                        <p class="event-description">Participate in initiatives that serve our local community and spread Yahshua's love.</p>
-                        <a href="#" class="btn">Get Involved</a>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <img src="https://images.unsplash.com/photo-1534011707018-8f85f5e5b3c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Teaching" class="event-image">
-                    <div class="event-details">
-                        <h3 class="event-title">Youth Discipleship</h3>
-                        <p class="event-description">Deepen your understanding of Scripture through our mentorship and study programs.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div> <div class="text-center" style="margin-top: 40px;">
-                <a href="#" class="btn btn-outline">Explore All Ministries</a>
-            </div>
-        </div> </section> <footer>
+ <footer>
         <div class="container footer-grid">
             <div class="footer-info">
                 <a href="#" class="footer-logo">COG<span>YOK</span></a>
