@@ -676,17 +676,7 @@
             color: rgba(255,255,255,0.7);
             font-size: 0.9rem;
         }
-/* ...existing code... */
-.event-rect {
-    /* ...existing styles... */
-    -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight on mobile */
-    outline: none; /* Remove focus outline */
-}
-.event-rect:focus {
-    outline: none;
-    box-shadow: none;
-}
-/* ...existing code... */
+
         .contact-item i {
             margin-right: 10px;
             color: var(--primary);
@@ -925,7 +915,188 @@
             </div>
         </div>
     </section>
+<style>
+    /* Compact Quote Section Styles */
+    .quote-section {
+        padding: 40px 0;
+        background-color: #f8f9fa;
+    }
+    
+    .quote-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    .quote-box {
+        position: relative;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 0;
+        box-shadow: 6px 6px 0 rgba(0,0,0,0.1), 
+                    12px 12px 0 rgba(0,0,0,0.05),
+                    0 0 0 1px rgba(0,0,0,0.1);
+        margin: 20px auto;
+        max-width: 550px;
+        border: 1px solid #e9ecef;
+    }
+    
+    .quote-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 8px;
+        background-color: #09b0ce;
+        opacity: 0.7;
+    }
+    
+    .quote-icon {
+        font-size: 1.8rem;
+        color: rgba(9, 176, 206, 0.2);
+        margin-bottom: 15px;
+    }
+    
+    .weekly-quote {
+        font-family: "Edu VIC WA NT Hand Pre", cursive;
+        font-size: 1.4rem;
+        line-height: 1.4;
+        color: #212529;
+        margin-bottom: 15px;
+        font-weight: 500;
+        position: relative;
+        padding-left: 15px;
+    }
+    
+    .weekly-quote::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: #09b0ce;
+    }
+    
+    .quote-author {
+        font-family: "Exo 2", sans-serif;
+        font-size: 1rem;
+        color: #1a6a7e;
+        font-weight: 500;
+        text-align: right;
+        margin-bottom: 15px;
+    }
+    
+    .quote-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+    
+    .share-quote {
+        background-color: #09b0ce;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 3px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "Exo 2", sans-serif;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+    
+    .share-quote:hover {
+        background-color: #1a6a7e;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .quote-section {
+            padding: 30px 0;
+        }
+        
+        .weekly-quote {
+            font-size: 1.2rem;
+        }
+        
+        .quote-box {
+            padding: 20px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .weekly-quote {
+            font-size: 1.1rem;
+        }
+        
+        .quote-box {
+            padding: 15px;
+        }
+        
+        .quote-icon {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+    }
+</style>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Share quote functionality
+        const shareButton = document.querySelector('.share-quote');
+        if (shareButton) {
+            shareButton.addEventListener('click', function() {
+                const quote = document.querySelector('.weekly-quote').textContent;
+                const author = document.querySelector('.quote-author').textContent;
+                const shareText = `${quote} ${author}`;
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Inspirational Quote',
+                        text: shareText,
+                        url: window.location.href
+                    }).catch(err => {
+                        console.log('Error sharing:', err);
+                        fallbackShare(shareText);
+                    });
+                } else {
+                    fallbackShare(shareText);
+                }
+            });
+        }
+        
+        function fallbackShare(shareText) {
+            navigator.clipboard.writeText(shareText).then(() => {
+                alert('Quote copied to clipboard!');
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+                window.open(`mailto:?subject=Inspirational Quote&body=${encodeURIComponent(shareText)}`);
+            });
+        }
+    });
+</script>
+
+<section class="quote-section">
+    <div class="quote-container">
+        <h2 class="section-title">Weekly Inspiration</h2>
+        <div class="quote-box">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <blockquote class="weekly-quote">
+                "Trust in Yahweh with all your heart and lean not on your own understanding."
+            </blockquote>
+            <div class="quote-author">— Proverbs 3:5</div>
+            <div class="quote-actions">
+                <button class="share-quote">
+                    <i class="fas fa-share"></i> Share
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
     <section class="events section" id="events">
         <div class="container">
             <h2 class="section-title">Upcoming Events</h2>
