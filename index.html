@@ -574,7 +574,7 @@
 }
 .event-rect-img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     background-size: cover;
     background-position: center;
     border-radius: 18px 18px 0 0;
@@ -632,7 +632,7 @@
         gap: 32px;
     }
     .event-rect-img {
-        height: 170px;
+        height: 200px;
         border-radius: 18px 18px 18px 18px;
         border-bottom-left-radius: 18px;
         border-bottom-right-radius: 18px;
@@ -868,11 +868,11 @@
             </div>
         </div>
     </div>
-
 <section class="hero">
     <div class="hero-bg-container" id="heroBgContainer">
         <div class="hero-slide" data-slide="0" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
-            <div class="hero-overlay"></div> <div class="hero-content">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Following Yahshua Together</h1>
                     <h2 class="hero-subtitle">Messianic Youth Ministry of COGMERS</h2>
@@ -881,9 +881,9 @@
                 </div>
             </div>
         </div>
-
         <div class="hero-slide" data-slide="1" style="background-image: url('https://images.unsplash.com/photo-1542403779-5f47710f4bf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
-            <div class="hero-overlay"></div> <div class="hero-content">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Growing in Torah & Grace</h1>
                     <h2 class="hero-subtitle">Embracing Our Hebraic Roots</h2>
@@ -892,9 +892,9 @@
                 </div>
             </div>
         </div>
-
         <div class="hero-slide" data-slide="2" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
-            <div class="hero-overlay"></div> <div class="hero-content">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Building Lasting Friendships</h1>
                     <h2 class="hero-subtitle">Community in Messiah</h2>
@@ -904,13 +904,117 @@
             </div>
         </div>
     </div>
-
-    <div class="slide-indicators" id="slideIndicators">
-        <div class="indicator active" data-slide="0"></div>
-        <div class="indicator" data-slide="1"></div>
-        <div class="indicator" data-slide="2"></div>
+    <!-- Progress Bar -->
+    <div class="hero-progress-bar">
+        <div class="hero-progress" id="heroProgress"></div>
     </div>
 </section>
+
+<style>
+.hero-progress-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+    z-index: 20;
+    overflow: hidden;
+}
+.hero-progress {
+    height: 100%;
+    width: 0%;
+    background: var(--primary, #09b0ce);
+    transition: width 5s linear;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Hero Slider
+    const heroBgContainer = document.getElementById('heroBgContainer');
+    const slides = document.querySelectorAll('.hero-slide');
+    const heroTexts = document.querySelectorAll('.hero-text');
+    const progressBar = document.getElementById('heroProgress');
+    let currentSlide = 0;
+    let intervalId;
+
+    // Duplicate slides for infinite effect
+    for (let i = 0; i < slides.length; i++) {
+        const clone = slides[i].cloneNode(true);
+        heroBgContainer.appendChild(clone);
+    }
+    const allSlides = document.querySelectorAll('.hero-slide');
+
+    function updateSlider() {
+        heroBgContainer.style.transition = 'transform 1s ease-in-out';
+        heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Animate text content for the active slide (original slides only)
+        const activeIndex = currentSlide % slides.length;
+        heroTexts.forEach((text, idx) => {
+            if (idx === activeIndex) {
+                text.classList.add('active');
+                text.querySelector('.hero-title').classList.add('active');
+                text.querySelector('.hero-subtitle').classList.add('active');
+                text.querySelector('.hero-description').classList.add('active');
+                text.querySelector('.hero-btn').classList.add('active');
+            } else {
+                text.classList.remove('active');
+                text.querySelector('.hero-title').classList.remove('active');
+                text.querySelector('.hero-subtitle').classList.remove('active');
+                text.querySelector('.hero-description').classList.remove('active');
+                text.querySelector('.hero-btn').classList.remove('active');
+            }
+        });
+
+        // Infinite loop effect
+        if (currentSlide >= slides.length) {
+            setTimeout(() => {
+                heroBgContainer.style.transition = 'none';
+                currentSlide = currentSlide % slides.length;
+                heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                setTimeout(() => {
+                    heroBgContainer.style.transition = 'transform 1s ease-in-out';
+                }, 50);
+            }, 1000);
+        }
+    }
+
+    function animateProgressBar() {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        setTimeout(() => {
+            progressBar.style.transition = 'width 5s linear';
+            progressBar.style.width = '100%';
+        }, 30);
+    }
+
+    function nextSlideWithProgress() {
+        currentSlide++;
+        updateSlider();
+        animateProgressBar();
+    }
+
+    function startSliderWithProgress() {
+        animateProgressBar();
+        intervalId = setInterval(() => {
+            nextSlideWithProgress();
+        }, 5000);
+    }
+
+    function resetSliderWithProgress() {
+        clearInterval(intervalId);
+        startSliderWithProgress();
+    }
+
+    // Start slider and progress bar
+    updateSlider();
+    startSliderWithProgress();
+
+    // Optional: If you add manual controls, call resetSliderWithProgress() on user interaction
+});
+</script>
     <section class="welcome section">
         <div class="container">
             <div class="welcome-container">
