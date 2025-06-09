@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COGYOK - COGMERS Messianic Youth</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: rgb(9, 176, 206);
@@ -84,21 +84,20 @@
         }
 
         .btn {
-            /* Button Styling for no background, hover fill from left, and centered */
             display: inline-block;
             padding: 10px 20px;
-            background-color: transparent; /* No background */
-            color: var(--primary); /* Text color */
-            border: 2px solid var(--primary); /* Border for definition */
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
             border-radius: var(--border-radius);
             font-weight: 500;
             transition: var(--transition);
             cursor: pointer;
             font-size: 0.9rem;
-            position: relative; /* For the pseudo-element to fill */
-            overflow: hidden; /* Hide overflow of the fill effect */
-            z-index: 1; /* Ensure text is above the fill */
-            text-align: center; /* Ensures the button content itself is centered */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
         }
 
         .btn::before {
@@ -106,33 +105,19 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 0; /* Starts with 0 width */
+            width: 0;
             height: 100%;
-            background-color: var(--primary); /* Fill color */
-            transition: width 0.3s ease-in-out; /* Animate width change */
-            z-index: -1; /* Place behind the text */
+            background-color: var(--primary);
+            transition: width 0.3s ease-in-out;
+            z-index: -1;
         }
 
         .btn:hover {
-            color: white; /* Text color changes to white on hover */
-            /* No background-color needed here, the pseudo-element handles the fill */
+            color: white;
         }
 
         .btn:hover::before {
-            width: 100%; /* Fills the button on hover */
-        }
-
-        .btn-outline {
-            /* This class becomes redundant with the new .btn styling,
-               but keeping it for flexibility if you want a different outline style later */
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
+            width: 100%;
         }
 
         .text-center {
@@ -140,23 +125,25 @@
         }
 
         /* Header/Navigation */
-      header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px 0;
-    z-index: 1000;
-    background: transparent;
-    transition: background 0.4s, backdrop-filter 0.4s;
-    box-shadow: none;
-    backdrop-filter: none;
-}
-header.scrolled {
-    background: rgba(2,29,39,0.85);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background: transparent;
+            transition: background 0.4s, backdrop-filter 0.4s;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+        
+        header.scrolled {
+            background: rgba(2,29,39,0.85);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -178,258 +165,271 @@ header.scrolled {
             color: var(--primary);
         }
 
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .desktop-nav a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .desktop-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+
         .hamburger {
             font-size: 1.5rem;
             cursor: pointer;
             color: white;
             z-index: 1001;
             transition: var(--transition);
+            display: block;
         }
 
         .hamburger:hover {
             color: var(--primary);
         }
 
-/* Hero Section */
-.hero {
-    position: relative;
-    height: 100vh;
-    min-height: 600px;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Ensure no background-color: black; here or on hero-bg-container */
-}
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* Updated hero-bg-container for slide animation */
-.hero-bg-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    transition: transform 1s ease-in-out;
-}
+        /* Updated hero-bg-container for slide animation */
+        .hero-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
 
-/* New hero-slide class for individual slides */
-.hero-slide {
-    position: relative; /* This is crucial for hero-overlay's absolute positioning */
-    min-width: 100%;
-    height: 100%;
-    background-size: cover; /* Added for individual slide background images */
-    background-position: center; /* Added for individual slide background images */
-    /* Ensure no background-image: none !important; or background-color: black; here */
-}
+        /* New hero-slide class for individual slides */
+        .hero-slide {
+            position: relative;
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
 
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* This will apply the semi-transparent black ONLY to the image area */
-    background: rgba(0, 0, 0, 0.6); /* Adjust 0.85 for desired darkness (0.5 for lighter, 0.95 for very dark) */
-    z-index: 3; /* This ensures it sits above the image but below the content */
-}
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 3;
+        }
 
-.hero-content {
-    position: relative; /* This is crucial for its z-index to work */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 10%;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-    z-index: 4; /* This ensures your content is always on top of the overlay */
-}
-/* ... (rest of your CSS remains the same) ... */
-.content-guide-line { /* This class is defined but not used in the HTML for the hero section */
-    position: absolute;
-    left: 10%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: rgba(255, 255, 255, 0.2);
-    z-index: 5;
-}
+        .hero-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            z-index: 4;
+        }
 
-.hero-content {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 10%;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-    z-index: 4;
-}
+        .hero-text {
+            max-width: 600px;
+            position: relative;
+            padding-left: 20px;
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.8s ease 0.3s;
+        }
 
-.hero-text {
-    max-width: 600px;
-    position: relative;
-    padding-left: 20px;
-    transform: translateX(-20px);
-    opacity: 0;
-    transition: all 0.8s ease 0.3s;
-}
+        .hero-text.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
 
-.hero-text.active {
-    transform: translateX(0);
-    opacity: 1;
-}
+        .hero-text::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary);
+        }
 
-.hero-text::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: var(--primary);
-}
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: rgb(9, 176, 206);
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.6s ease 0.4s;
+        }
 
-.hero-title {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    color: rgb(9, 176, 206); /* Already white, keeping for clarity */
-    transform: translateX(-50px);
-    opacity: 0;
-    transition: all 0.6s ease 0.4s;
-}
+        .hero-title.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
 
-.hero-title.active {
-    transform: translateX(0);
-    opacity: 1;
-}
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            transform: translateX(-30px);
+            opacity: 0;
+            transition: all 0.6s ease 0.6s;
+        }
 
-.hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-    color: rgba(255,255,255,0.9); /* Already light, keeping for clarity */
-    font-weight: 300;
-    transform: translateX(-30px);
-    opacity: 0;
-    transition: all 0.6s ease 0.6s;
-}
+        .hero-subtitle.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
 
-.hero-subtitle.active {
-    transform: translateX(0);
-    opacity: 1;
-}
+        .hero-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.8);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease 0.8s;
+            max-width: 500px;
+        }
 
-.hero-description {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 30px;
-    color: rgba(255,255,255,0.8); /* Already light, keeping for clarity */
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.6s ease 0.8s;
-    max-width: 500px;
-}
+        .hero-description.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
-.hero-description.active {
-    transform: translateY(0);
-    opacity: 1;
-}
+        .hero-btn {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease 1s;
+            align-self: center;
+        }
 
-.hero-btn {
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.6s ease 1s;
-    align-self: center;
-}
+        .hero-btn.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
-.hero-btn.active {
-    transform: translateY(0);
-    opacity: 1;
-}
-/* Slide Indicators */
-.slide-indicators {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-}
+        /* Slide Indicators */
+        .slide-indicators {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
 
-.indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.3);
-    cursor: pointer;
-    transition: all 0.3s;
-}
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
 
-.indicator.active {
-    background-color: var(--primary);
-    transform: scale(1.3);
-}
+        .indicator.active {
+            background-color: var(--primary);
+            transform: scale(1.3);
+        }
 
-@media (max-width: 992px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
+        /* Progress Bar */
+        .hero-progress-bar {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.15);
+            z-index: 20;
+            overflow: hidden;
+        }
+        
+        .hero-progress {
+            height: 100%;
+            width: 0%;
+            background: var(--primary, #09b0ce);
+            transition: width 5s linear;
+        }
 
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero {
-        height: 80vh;
-        min-height: 500px;
-    }
-
-    .hero-content {
-        padding: 0 5%;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-title {
-        font-size: 1.8rem;
-    }
-
-    .hero-description {
-        font-size: 0.9rem;
-    }
-}
         /* Mobile Menu */
         .mobile-menu {
             position: fixed;
-            top: 70px; /* Adjust based on your header height */
+            top: 70px;
             left: 0;
             right: 0;
             width: 100%;
-            height: 0; /* Start hidden */
-            background-color: var(--secondary);
+            max-height: 0;
+            background-color: rgba(2,29,39,0.95);
             overflow: hidden;
-            transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth expand/collapse */
+            transition: max-height 0.5s cubic-bezier(0.65, 0, 0.35, 1);
             z-index: 999;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
         }
 
         .mobile-menu.active {
-            height: auto; /* Allow content to dictate height */
-            padding: 20px 0;
-            max-height: 500px; /* Prevent it from expanding too much on large screens */
+            max-height: 500px;
+        }
+
+        .mobile-menu.scrolled {
+            background-color: rgba(255,255,255,0.95);
+        }
+        
+        .mobile-menu.scrolled a {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu.scrolled a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu.scrolled .menu-section h3 {
+            color: var(--primary);
         }
 
         .mobile-menu-container {
@@ -438,7 +438,7 @@ header.scrolled {
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
 
         .menu-section h3 {
@@ -466,31 +466,6 @@ header.scrolled {
             margin-right: 10px;
             width: 20px;
             text-align: center;
-        }
-
-        /* Slide Indicators */
-        .slide-indicators {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .indicator.active {
-            background-color: var(--primary);
-            transform: scale(1.3);
         }
 
         /* Welcome Section */
@@ -550,121 +525,94 @@ header.scrolled {
             font-size: 1.2rem;
             margin-top: 3px;
         }
+
         .events-list-rect {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 28px;
-}
-.event-rect {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    overflow: hidden;
-    transition: box-shadow 0.22s cubic-bezier(.4,2,.3,1), transform 0.22s cubic-bezier(.4,2,.3,1);
-    cursor: pointer;
-    touch-action: manipulation;
-    will-change: box-shadow, transform;
-}
-.event-rect:hover,
-.event-rect:active {
-    box-shadow: 0 6px 18px rgba(0,0,0,0.11);
-    transform: translateY(-2px) scale(1.008);
-}
-.event-rect-img {
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 18px 18px 0 0;
-    object-fit: cover;
-    display: block;
-    transition: border-radius 0.2s;
-    box-shadow: none;
-}
-.event-rect-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 18px 22px 22px 22px;
-    min-width: 0;
-}
-.event-rect-title {
-    font-size: 1.1rem;
-    color: var(--secondary);
-    margin-bottom: 6px;
-    font-family: "Exo 2", sans-serif;
-    font-weight: 600;
-}
-.event-rect-date {
-    font-size: 0.95rem;
-    color: var(--primary-dark);
-    margin-bottom: 7px;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-}
-.event-rect-date i {
-    color: var(--primary);
-    margin-right: 5px;
-}
-.event-rect-desc {
-    color: var(--gray);
-    font-size: 0.97rem;
-    margin-bottom: 10px;
-    line-height: 1.5;
-    max-width: 420px;
-}
-.event-rect-btn {
-    align-self: flex-start;
-    font-size: 0.93rem;
-    padding: 7px 18px;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-}
-@media (min-width: 900px) {
-    .events-list-rect {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-    }
-    .event-rect-img {
-        height: 200px;
-        border-radius: 18px 18px 18px 18px;
-        border-bottom-left-radius: 18px;
-        border-bottom-right-radius: 18px;
-    }
-}
-@media (max-width: 700px) {
-    .events-list-rect {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-   .event-rect {
-    -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight on mobile */
-    outline: none; /* Remove focus outline */
-}
-.event-rect:focus {
-    outline: none;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.11); /* Keep only your custom shadow */
-}
-    .event-rect-img {
-        width: 100%;
-        height: 160px;
-        border-radius: 18px 18px 18px 18px;
-        object-fit: cover;
-        background-position: center bottom;
-        display: block;
-    }
-    .event-rect-content {
-        padding: 14px 10px 18px 10px;
-        border-radius: 0 0 18px 18px;
-    }
-}
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .event-rect {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: box-shadow 0.22s cubic-bezier(.4,2,.3,1), transform 0.22s cubic-bezier(.4,2,.3,1);
+            cursor: pointer;
+            touch-action: manipulation;
+            will-change: box-shadow, transform;
+        }
+
+        .event-rect:hover,
+        .event-rect:active {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.11);
+            transform: translateY(-2px) scale(1.008);
+        }
+
+        .event-rect-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 18px 18px 0 0;
+            object-fit: cover;
+            display: block;
+            transition: border-radius 0.2s;
+            box-shadow: none;
+        }
+
+        .event-rect-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 18px 22px 22px 22px;
+            min-width: 0;
+        }
+
+        .event-rect-title {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 6px;
+            font-family: "Exo 2", sans-serif;
+            font-weight: 600;
+        }
+
+        .event-rect-date {
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .event-rect-date i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .event-rect-desc {
+            color: var(--gray);
+            font-size: 0.97rem;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            max-width: 420px;
+        }
+
+        .event-rect-btn {
+            align-self: flex-start;
+            font-size: 0.93rem;
+            padding: 7px 18px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
         /* Footer */
         footer {
             background-color: rgb(2, 29, 39);
@@ -766,6 +714,29 @@ header.scrolled {
         }
 
         /* Responsive */
+        @media (min-width: 900px) {
+            .events-list-rect {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+            
+            .event-rect-img {
+                height: 200px;
+                border-radius: 18px 18px 18px 18px;
+                border-bottom-left-radius: 18px;
+                border-bottom-right-radius: 18px;
+            }
+            
+            /* Show desktop nav and hide hamburger */
+            .desktop-nav {
+                display: block;
+            }
+            
+            .hamburger {
+                display: none;
+            }
+        }
+
         @media (max-width: 992px) {
             .welcome-container,
             .about-grid {
@@ -791,7 +762,7 @@ header.scrolled {
 
         @media (max-width: 768px) {
             .hero {
-                height: 80vh;
+                height: 100vh; /* Changed from 80vh to 100vh */
                 min-height: 500px;
             }
 
@@ -806,8 +777,6 @@ header.scrolled {
             .mobile-menu-container {
                 grid-template-columns: 1fr;
             }
-
-           
         }
 
         @media (max-width: 576px) {
@@ -826,18 +795,6 @@ header.scrolled {
             .hero-description {
                 font-size: 0.9rem;
             }
-
-            /* Updated hero-bg-container for slide animation */
-.hero-bg-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    transition: transform 1s ease-in-out;
-}
-
         }
     </style>
 </head>
@@ -845,6 +802,16 @@ header.scrolled {
     <header>
         <div class="header-container">
             <a href="#" class="logo">COGYOK <span>Kiambu</span></a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#">Torah Study</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
             <div class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
@@ -869,166 +836,46 @@ header.scrolled {
             </div>
         </div>
     </div>
-<section class="hero">
-    <div class="hero-bg-container" id="heroBgContainer">
-        <div class="hero-slide" data-slide="0" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Following Yahshua Together</h1>
-                    <h2 class="hero-subtitle">Messianic Youth Ministry of COGMERS</h2>
-                    <p class="hero-description">A vibrant community of young believers walking in the truth of Scripture, keeping the commandments, and proclaiming Yahshua as Messiah.</p>
+
+    <section class="hero">
+        <div class="hero-bg-container" id="heroBgContainer">
+            <div class="hero-slide" data-slide="0" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Following Yahshua Together</h1>
+                        <h2 class="hero-subtitle">Messianic Youth Ministry of COGMERS</h2>
+                        <p class="hero-description">A vibrant community of young believers walking in the truth of Scripture, keeping the commandments, and proclaiming Yahshua as Messiah.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" data-slide="1" style="background-image: url('https://images.unsplash.com/photo-1542403779-5f47710f4bf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Growing in Torah & Grace</h1>
+                        <h2 class="hero-subtitle">Embracing Our Hebraic Roots</h2>
+                        <p class="hero-description">We are passionate about understanding the full counsel of Elohim, from Genesis to Revelation, through the lens of Messiah.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" data-slide="2" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Building Lasting Friendships</h1>
+                        <h2 class="hero-subtitle">Community in Messiah</h2>
+                        <p class="hero-description">Connect with like-minded youth, build strong bonds, and support each other on your spiritual journey.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-slide" data-slide="1" style="background-image: url('https://images.unsplash.com/photo-1542403779-5f47710f4bf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Growing in Torah & Grace</h1>
-                    <h2 class="hero-subtitle">Embracing Our Hebraic Roots</h2>
-                    <p class="hero-description">We are passionate about understanding the full counsel of Elohim, from Genesis to Revelation, through the lens of Messiah.</p>
-                </div>
-            </div>
+        <!-- Progress Bar -->
+        <div class="hero-progress-bar">
+            <div class="hero-progress" id="heroProgress"></div>
         </div>
-        <div class="hero-slide" data-slide="2" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80')">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Building Lasting Friendships</h1>
-                    <h2 class="hero-subtitle">Community in Messiah</h2>
-                    <p class="hero-description">Connect with like-minded youth, build strong bonds, and support each other on your spiritual journey.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Progress Bar -->
-    <div class="hero-progress-bar">
-        <div class="hero-progress" id="heroProgress"></div>
-    </div>
-</section>
+    </section>
 
-<style>
-.hero-progress-bar {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    background: rgba(255,255,255,0.15);
-    z-index: 20;
-    overflow: hidden;
-}
-.hero-progress {
-    height: 100%;
-    width: 0%;
-    background: var(--primary, #09b0ce);
-    transition: width 5s linear;
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Hero Slider
-    const heroBgContainer = document.getElementById('heroBgContainer');
-    const slides = document.querySelectorAll('.hero-slide');
-    const heroTexts = document.querySelectorAll('.hero-text');
-    const progressBar = document.getElementById('heroProgress');
-    let currentSlide = 0;
-    let intervalId;
-
-    // Duplicate slides for infinite effect
-    for (let i = 0; i < slides.length; i++) {
-        const clone = slides[i].cloneNode(true);
-        heroBgContainer.appendChild(clone);
-    }
-    const allSlides = document.querySelectorAll('.hero-slide');
-
-    function updateSlider() {
-        heroBgContainer.style.transition = 'transform 1s ease-in-out';
-        heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-        // Animate text content for the active slide (original slides only)
-        const activeIndex = currentSlide % slides.length;
-        heroTexts.forEach((text, idx) => {
-            if (idx === activeIndex) {
-                text.classList.add('active');
-                text.querySelector('.hero-title').classList.add('active');
-                text.querySelector('.hero-subtitle').classList.add('active');
-                text.querySelector('.hero-description').classList.add('active');
-            } else {
-                text.classList.remove('active');
-                text.querySelector('.hero-title').classList.remove('active');
-                text.querySelector('.hero-subtitle').classList.remove('active');
-                text.querySelector('.hero-description').classList.remove('active');
-            }
-        });
-
-        // Infinite loop effect
-        if (currentSlide >= slides.length) {
-            setTimeout(() => {
-                heroBgContainer.style.transition = 'none';
-                currentSlide = currentSlide % slides.length;
-                heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-                setTimeout(() => {
-                    heroBgContainer.style.transition = 'transform 1s ease-in-out';
-                }, 50);
-            }, 1000);
-        }
-    }
-
-    function animateProgressBar() {
-        progressBar.style.transition = 'none';
-        progressBar.style.width = '0%';
-        setTimeout(() => {
-            progressBar.style.transition = 'width 5s linear';
-            progressBar.style.width = '100%';
-        }, 30);
-    }
-
-    function nextSlideWithProgress() {
-        currentSlide++;
-        updateSlider();
-        animateProgressBar();
-    }
-
-    function startSliderWithProgress() {
-        animateProgressBar();
-        intervalId = setInterval(() => {
-            nextSlideWithProgress();
-        }, 5000);
-    }
-
-    function resetSliderWithProgress() {
-        clearInterval(intervalId);
-        startSliderWithProgress();
-    }
-
-    // Start slider and progress bar
-    updateSlider();
-    startSliderWithProgress();
-
-    // Optional: If you add manual controls, call resetSliderWithProgress() on user interaction
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const header = document.querySelector('header');
-    const hero = document.querySelector('.hero');
-    function onScroll() {
-        // Get the bottom position of the hero section
-        const heroBottom = hero.getBoundingClientRect().bottom;
-        if (heroBottom <= 0) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-});
-</script>
     <section class="welcome section">
         <div class="container">
             <div class="welcome-container">
@@ -1068,57 +915,58 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
     </section>
-<section class="events section" id="events">
-    <div class="container">
-        <h2 class="section-title">Upcoming Events</h2>
-        <div class="events-list-rect">
-            <!-- Event 1 -->
-            <div class="event-rect">
-                <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80');"></div>
-                <div class="event-rect-content">
-                    <h3 class="event-rect-title">Shabbat Gathering</h3>
-                    <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> June 15, 2025</div>
-                    <p class="event-rect-desc">
-                        Join us for a joyful Shabbat celebration with worship, Torah reading, and fellowship. All youth welcome!
-                    </p>
-                    <a href="#" class="btn event-rect-btn">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
+
+    <section class="events section" id="events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-list-rect">
+                <!-- Event 1 -->
+                <div class="event-rect">
+                    <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="event-rect-content">
+                        <h3 class="event-rect-title">Shabbat Gathering</h3>
+                        <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> June 15, 2025</div>
+                        <p class="event-rect-desc">
+                            Join us for a joyful Shabbat celebration with worship, Torah reading, and fellowship. All youth welcome!
+                        </p>
+                        <a href="#" class="btn event-rect-btn">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <!-- Event 2 -->
-            <div class="event-rect">
-                <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80');"></div>
-                <div class="event-rect-content">
-                    <h3 class="event-rect-title">Youth Retreat</h3>
-                    <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> July 20-22, 2025</div>
-                    <p class="event-rect-desc">
-                        A weekend of adventure, worship, and spiritual growth in the great outdoors. Register now—spaces are limited!
-                    </p>
-                    <a href="#" class="btn event-rect-btn">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
+                <!-- Event 2 -->
+                <div class="event-rect">
+                    <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="event-rect-content">
+                        <h3 class="event-rect-title">Youth Retreat</h3>
+                        <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> July 20-22, 2025</div>
+                        <p class="event-rect-desc">
+                            A weekend of adventure, worship, and spiritual growth in the great outdoors. Register now—spaces are limited!
+                        </p>
+                        <a href="#" class="btn event-rect-btn">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <!-- Event 3 -->
-            <div class="event-rect">
-                <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1515168833906-d2a3b82b3029?auto=format&fit=crop&w=400&q=80');"></div>
-                <div class="event-rect-content">
-                    <h3 class="event-rect-title">Community Outreach</h3>
-                    <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> August 10, 2025</div>
-                    <p class="event-rect-desc">
-                        Serve with us as we share love and practical help with our neighbors. All hands and hearts needed!
-                    </p>
-                    <a href="#" class="btn event-rect-btn">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
+                <!-- Event 3 -->
+                <div class="event-rect">
+                    <div class="event-rect-img" style="background-image: url('https://images.unsplash.com/photo-1515168833906-d2a3b82b3029?auto=format&fit=crop&w=400&q=80');"></div>
+                    <div class="event-rect-content">
+                        <h3 class="event-rect-title">Community Outreach</h3>
+                        <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> August 10, 2025</div>
+                        <p class="event-rect-desc">
+                            Serve with us as we share love and practical help with our neighbors. All hands and hearts needed!
+                        </p>
+                        <a href="#" class="btn event-rect-btn">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
- <footer>
+    <footer>
         <div class="container footer-grid">
             <div class="footer-info">
                 <a href="#" class="footer-logo">COG<span>YOK</span></a>
@@ -1171,12 +1019,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Mobile Menu Toggle
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
+            const header = document.querySelector('header');
+            const hero = document.querySelector('.hero');
 
             if (hamburger && mobileMenu) {
                 hamburger.addEventListener('click', () => {
                     mobileMenu.classList.toggle('active');
                     hamburger.querySelector('i').classList.toggle('fa-bars');
-                    hamburger.querySelector('i').classList.toggle('fa-times'); // Change icon
+                    hamburger.querySelector('i').classList.toggle('fa-times');
                 });
 
                 // Close mobile menu when a link is clicked
@@ -1189,106 +1039,103 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-        // Hero Slider
-        const heroBgContainer = document.getElementById('heroBgContainer');
-        const slides = document.querySelectorAll('.hero-slide');
-        const indicatorsContainer = document.getElementById('slideIndicators');
-        const heroTexts = document.querySelectorAll('.hero-text');
-        let currentSlide = 0; // This will now represent the number of times we've moved to the next logical slide
-        let intervalId;
+            // Hero Slider
+            const heroBgContainer = document.getElementById('heroBgContainer');
+            const slides = document.querySelectorAll('.hero-slide');
+            const heroTexts = document.querySelectorAll('.hero-text');
+            const progressBar = document.getElementById('heroProgress');
+            let currentSlide = 0;
+            let intervalId;
 
-        // Duplicate slides to create the continuous effect
-        // Append clones of the first few slides to the end
-        // This is crucial for a smooth transition before "resetting"
-        for (let i = 0; i < slides.length; i++) {
-            const clone = slides[i].cloneNode(true);
-            heroBgContainer.appendChild(clone);
-        }
+            // Duplicate slides for infinite effect
+            for (let i = 0; i < slides.length; i++) {
+                const clone = slides[i].cloneNode(true);
+                heroBgContainer.appendChild(clone);
+            }
+            const allSlides = document.querySelectorAll('.hero-slide');
 
-        // Get the new total number of slides (original + clones)
-        const allSlides = document.querySelectorAll('.hero-slide');
+            function updateSlider() {
+                heroBgContainer.style.transition = 'transform 1s ease-in-out';
+                heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-        function updateSlider() {
-            // Apply the transform
-            heroBgContainer.style.transition = 'transform 1s ease-in-out'; // Ensure transition is applied
-            heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                // Animate text content for the active slide (original slides only)
+                const activeIndex = currentSlide % slides.length;
+                heroTexts.forEach((text, idx) => {
+                    if (idx === activeIndex) {
+                        text.classList.add('active');
+                        text.querySelector('.hero-title').classList.add('active');
+                        text.querySelector('.hero-subtitle').classList.add('active');
+                        text.querySelector('.hero-description').classList.add('active');
+                    } else {
+                        text.classList.remove('active');
+                        text.querySelector('.hero-title').classList.remove('active');
+                        text.querySelector('.hero-subtitle').classList.remove('active');
+                        text.querySelector('.hero-description').classList.remove('active');
+                    }
+                });
 
-            // Update active indicator (this part still refers to the original slides)
-            const activeIndicatorIndex = currentSlide % slides.length;
-            indicatorsContainer.querySelectorAll('.indicator').forEach((indicator, index) => {
-                if (index === activeIndicatorIndex) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            });
-
-            // Animate text content for the active slide (referring to original slides)
-            heroTexts.forEach((text, index) => {
-                if (index === activeIndicatorIndex) {
-                    text.classList.add('active');
-                    text.querySelector('.hero-title').classList.add('active');
-                    text.querySelector('.hero-subtitle').classList.add('active');
-                    text.querySelector('.hero-description').classList.add('active');
-                    text.querySelector('.hero-btn').classList.add('active');
-                } else {
-                    text.classList.remove('active');
-                    text.querySelector('.hero-title').classList.remove('active');
-                    text.querySelector('.hero-subtitle').classList.remove('active');
-                    text.querySelector('.hero-description').classList.remove('active');
-                    text.querySelector('.hero-btn').classList.remove('active');
-                }
-            });
-
-            // If we've transitioned to a cloned slide,
-            // immediately reset the transform without transition
-            // to create the illusion of continuous loop
-            if (currentSlide >= slides.length) {
-                // Wait for the transition to finish before resetting
-                setTimeout(() => {
-                    heroBgContainer.style.transition = 'none'; // Disable transition for instant reset
-                    currentSlide = currentSlide % slides.length; // Reset to the corresponding original slide
-                    heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-                    // Re-enable transition for the next actual slide
+                // Infinite loop effect
+                if (currentSlide >= slides.length) {
                     setTimeout(() => {
-                        heroBgContainer.style.transition = 'transform 1s ease-in-out';
-                    }, 50); // Small delay to ensure transition property is reset
-                }, 1000); // This delay should match your CSS transition duration
+                        heroBgContainer.style.transition = 'none';
+                        currentSlide = currentSlide % slides.length;
+                        heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                        setTimeout(() => {
+                            heroBgContainer.style.transition = 'transform 1s ease-in-out';
+                        }, 50);
+                    }, 1000);
+                }
             }
-        }
 
-        function nextSlide() {
-            currentSlide++;
-            updateSlider();
-        }
+            function animateProgressBar() {
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '0%';
+                setTimeout(() => {
+                    progressBar.style.transition = 'width 5s linear';
+                    progressBar.style.width = '100%';
+                }, 30);
+            }
 
-        function startSlider() {
-            intervalId = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-        }
-
-        function resetSlider() {
-            clearInterval(intervalId);
-            startSlider();
-        }
-
-        indicatorsContainer.addEventListener('click', (event) => {
-            if (event.target.classList.contains('indicator')) {
-                const slideIndex = parseInt(event.target.dataset.slide);
-                // When clicking an indicator, we want to go to the corresponding original slide
-                // and then continue from there.
-                currentSlide = slideIndex;
+            function nextSlideWithProgress() {
+                currentSlide++;
                 updateSlider();
-                resetSlider();
+                animateProgressBar();
             }
+
+            function startSliderWithProgress() {
+                animateProgressBar();
+                intervalId = setInterval(() => {
+                    nextSlideWithProgress();
+                }, 5000);
+            }
+
+            function resetSliderWithProgress() {
+                clearInterval(intervalId);
+                startSliderWithProgress();
+            }
+
+            // Start slider and progress bar
+            updateSlider();
+            startSliderWithProgress();
+
+            // Header scroll effect and mobile menu background
+            function onScroll() {
+                const heroBottom = hero.getBoundingClientRect().bottom;
+                if (heroBottom <= 0) {
+                    header.classList.add('scrolled');
+                    mobileMenu.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                    mobileMenu.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
-
-        // Initialize slider and start autoplay
-        updateSlider(); // Set initial state
-        startSlider();
-
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    });
-</script>
+    </script>
 </body>
 </html>
