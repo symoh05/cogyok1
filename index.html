@@ -82,17 +82,7 @@
             background-color: var(--primary);
             transform: translateX(-50%);
         }
-.event-rect,
-.quote-box {
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-}
 
-.event-rect:focus,
-.quote-box:focus {
-    outline: none;
-    box-shadow: none;
-}
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -1156,7 +1146,275 @@
             </div>
         </div>
     </section>
+<style>
+    /* Blog Section Styles */
+    .blog-section {
+        padding: 60px 0;
+        background-color: #f8f9fa;
+    }
+    
+    .blog-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .blog-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .blog-item {
+        display: flex;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .blog-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    
+    .blog-image {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+    
+    .blog-content {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    
+    .blog-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 10px;
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+    
+    .blog-date, .blog-author {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .blog-date i, .blog-author i {
+        color: #09b0ce;
+    }
+    
+    .blog-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: #212529;
+        font-weight: 600;
+    }
+    
+    .blog-excerpt {
+        color: #495057;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        flex: 1;
+    }
+    
+    .read-more {
+        align-self: flex-start;
+        padding: 8px 20px;
+        background-color: #09b0ce;
+        color: white;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+    }
+    
+    .read-more:hover {
+        background-color: #1a6a7e;
+    }
+    
+    /* Responsive adjustments - Maintain horizontal layout */
+    @media (max-width: 768px) {
+        .blog-image {
+            width: 200px;
+            height: 200px;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-title {
+            font-size: 1.2rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .blog-section {
+            padding: 40px 0;
+        }
+        
+        .blog-item {
+            flex-direction: row; /* Maintain horizontal layout */
+        }
+        
+        .blog-image {
+            width: 150px;
+            height: 100%;
+        }
+        
+        .blog-content {
+            padding: 15px;
+        }
+        
+        .blog-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-excerpt {
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        
+        .blog-meta {
+            font-size: 0.8rem;
+            gap: 10px;
+        }
+        
+        .read-more {
+            padding: 6px 15px;
+            font-size: 0.8rem;
+        }
+    }
+    
+   @media (max-width: 400px) {
+    .blog-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 
+    .blog-item {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 150px; /* Fixed height for uniformity */
+    }
+
+    .blog-image {
+        width: 120px;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .blog-content {
+        padding: 12px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .blog-title {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+    .blog-excerpt {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+
+    .blog-meta {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 0.75rem;
+    }
+
+    .read-more {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+}
+
+</style>
+
+<section class="blog-section">
+    <div class="blog-container">
+        <h2 class="section-title">Latest Blog Posts</h2>
+        <div class="blog-list">
+            <!-- Blog Post 1 -->
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                     alt="Torah study" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">
+                            <i class="far fa-calendar-alt"></i> June 15, 2025
+                        </span>
+                        <span class="blog-author">
+                            <i class="fas fa-user"></i> Elder James
+                        </span>
+                    </div>
+                    <h3 class="blog-title">Understanding the Feasts of Yahweh</h3>
+                    <p class="blog-excerpt">
+                        Discover the profound meaning behind Yahweh's appointed times and how they point to Messiah...
+                    </p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <!-- Blog Post 2 -->
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                     alt="Youth group" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">
+                            <i class="far fa-calendar-alt"></i> June 8, 2025
+                        </span>
+                        <span class="blog-author">
+                            <i class="fas fa-user"></i> Sister Miriam
+                        </span>
+                    </div>
+                    <h3 class="blog-title">Building Authentic Community</h3>
+                    <p class="blog-excerpt">
+                        Learn how to cultivate deep, meaningful relationships within the body of Messiah...
+                    </p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <!-- Blog Post 3 -->
+            <div class="blog-item">
+                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                     alt="Prayer" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">
+                            <i class="far fa-calendar-alt"></i> June 1, 2025
+                        </span>
+                        <span class="blog-author">
+                            <i class="fas fa-user"></i> Brother Daniel
+                        </span>
+                    </div>
+                    <h3 class="blog-title">The Power of Persistent Prayer</h3>
+                    <p class="blog-excerpt">
+                        Explore biblical principles of effective prayer and how to develop a consistent prayer life...
+                    </p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     <footer>
         <div class="container footer-grid">
             <div class="footer-info">
