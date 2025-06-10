@@ -536,8 +536,9 @@
             display: flex;
             flex-direction: column;
             align-items: stretch;
-            background: #fff;
-            border-radius: 18px;
+            background: none;
+            border: 1px solid rgb(204, 199, 199);
+            border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             overflow: hidden;
             transition: box-shadow 0.22s cubic-bezier(.4,2,.3,1), transform 0.22s cubic-bezier(.4,2,.3,1);
@@ -557,7 +558,7 @@
             height: 200px;
             background-size: cover;
             background-position: center;
-            border-radius: 18px 18px 0 0;
+            border-radius: 8px;
             object-fit: cover;
             display: block;
             transition: border-radius 0.2s;
@@ -722,9 +723,9 @@
             
             .event-rect-img {
                 height: 200px;
-                border-radius: 18px 18px 18px 18px;
-                border-bottom-left-radius: 18px;
-                border-bottom-right-radius: 18px;
+                border-radius: 8px;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
             }
             
             /* Show desktop nav and hide hamburger */
@@ -910,7 +911,7 @@
                     <a href="#about" class="btn">Our Story</a>
                 </div>
                 <div class="welcome-image">
-                    <img src="https://images.unsplash.com/photo-1542403779-5f47710f4bf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Youth group worship">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" alt="Youth group worship">
                 </div>
             </div>
         </div>
@@ -1086,7 +1087,7 @@
         <div class="quote-box">
             <i class="fas fa-quote-left quote-icon"></i>
             <blockquote class="weekly-quote">
-                "Trust in Yahweh with all your heart and lean not on your own understanding."
+                "Trust in Elohim with all your heart and lean not on your own understanding."
             </blockquote>
             <div class="quote-author">— Proverbs 3:5</div>
             <div class="quote-actions">
@@ -1147,199 +1148,158 @@
         </div>
     </section>
 <style>
-    /* Blog Section Styles */
-    .blog-section {
-        padding: 60px 0;
-        background-color: #f8f9fa;
-    }
-    
-    .blog-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    
-    .blog-list {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
+   /* Updated Blog Section Styles */
+.blog-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.blog-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.blog-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px; /* Reduced gap */
+}
+
+.blog-item {
+    display: flex;
+    background: none;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 125px; /* Reduced height by half from original 250px */
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.blog-image {
+    width: 125px; /* Reduced width by half */
+    height: 100%; /* Full height of container */
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 8px; /* Left side rounded */
+}
+
+.blog-content {
+    padding: 15px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.blog-meta {
+    display: flex;
+    gap: 10px; /* Reduced gap */
+    margin-bottom: 5px; /* Reduced margin */
+    font-size: 0.75rem; /* Smaller font */
+    color: #6c757d;
+}
+
+.blog-date, .blog-author {
+    display: flex;
+    align-items: center;
+    gap: 3px; /* Reduced gap */
+}
+
+.blog-date i, .blog-author i {
+    color: #09b0ce;
+}
+
+.blog-title {
+    font-size: 1rem; /* Smaller font */
+    margin-bottom: 5px; /* Reduced margin */
+    color: #212529;
+    font-weight: 600;
+}
+
+.blog-excerpt {
+    color: #495057;
+    margin-bottom: 10px; /* Reduced margin */
+    line-height: 1.4; /* Tighter line height */
+    flex: 1;
+    font-size: 0.85rem; /* Smaller font */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more {
+    align-self: flex-start;
+    padding: 5px 12px; /* Smaller button */
+    background-color: #09b0ce;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem; /* Smaller font */
+    transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: #1a6a7e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
     .blog-item {
-        display: flex;
-        background-color: #fff;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .blog-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        height: 110px; /* Slightly smaller */
     }
     
     .blog-image {
-        width: 250px;
-        height: 250px;
-        object-fit: cover;
-        flex-shrink: 0;
+        width: 110px; /* Slightly smaller */
     }
     
-    .blog-content {
-        padding: 25px;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-    }
-    
-    .blog-meta {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 10px;
-        font-size: 0.85rem;
-        color: #6c757d;
-    }
-    
-    .blog-date, .blog-author {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    
-    .blog-date i, .blog-author i {
-        color: #09b0ce;
-    }
-    
-    .blog-title {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-        color: #212529;
-        font-weight: 600;
-    }
-    
-    .blog-excerpt {
-        color: #495057;
-        margin-bottom: 20px;
-        line-height: 1.6;
-        flex: 1;
-    }
-    
-    .read-more {
-        align-self: flex-start;
-        padding: 8px 20px;
-        background-color: #09b0ce;
-        color: white;
-        border-radius: 4px;
-        font-size: 0.9rem;
-        transition: background-color 0.3s ease;
-    }
-    
-    .read-more:hover {
-        background-color: #1a6a7e;
-    }
-    
-    /* Responsive adjustments - Maintain horizontal layout */
-    @media (max-width: 768px) {
-        .blog-image {
-            width: 200px;
-            height: 200px;
-        }
-        
-        .blog-content {
-            padding: 20px;
-        }
-        
-        .blog-title {
-            font-size: 1.2rem;
-        }
-    }
-    
-    @media (max-width: 576px) {
-        .blog-section {
-            padding: 40px 0;
-        }
-        
-        .blog-item {
-            flex-direction: row; /* Maintain horizontal layout */
-        }
-        
-        .blog-image {
-            width: 150px;
-            height: 100%;
-        }
-        
-        .blog-content {
-            padding: 15px;
-        }
-        
-        .blog-title {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-        
-        .blog-excerpt {
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-        }
-        
-        .blog-meta {
-            font-size: 0.8rem;
-            gap: 10px;
-        }
-        
-        .read-more {
-            padding: 6px 15px;
-            font-size: 0.8rem;
-        }
-    }
-    
-   @media (max-width: 400px) {
-    .blog-list {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .blog-item {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 150px; /* Fixed height for uniformity */
-    }
-
-    .blog-image {
-        width: 120px;
-        height: 100%;
-        object-fit: cover;
-    }
-
     .blog-content {
         padding: 12px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
-
+    
     .blog-title {
-        font-size: 1rem;
-        margin-bottom: 5px;
+        font-size: 0.95rem;
     }
+}
 
+@media (max-width: 576px) {
+    .blog-section {
+        padding: 40px 0;
+    }
+    
+    .blog-item {
+        height: 100px; /* Even smaller */
+    }
+    
+    .blog-image {
+        width: 100px; /* Even smaller */
+    }
+    
+    .blog-content {
+        padding: 10px;
+    }
+    
+    .blog-title {
+        font-size: 0.9rem;
+    }
+    
     .blog-excerpt {
         font-size: 0.8rem;
-        margin-bottom: 6px;
+        -webkit-line-clamp: 1; /* Only 1 line on smallest screens */
     }
-
+    
     .blog-meta {
-        flex-direction: column;
-        gap: 5px;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+        gap: 8px;
     }
-
+    
     .read-more {
-        padding: 6px 10px;
+        padding: 4px 10px;
         font-size: 0.75rem;
     }
 }
@@ -1352,7 +1312,7 @@
         <div class="blog-list">
             <!-- Blog Post 1 -->
             <div class="blog-item">
-                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80"
                      alt="Torah study" class="blog-image">
                 <div class="blog-content">
                     <div class="blog-meta">
@@ -1363,9 +1323,9 @@
                             <i class="fas fa-user"></i> Elder James
                         </span>
                     </div>
-                    <h3 class="blog-title">Understanding the Feasts of Yahweh</h3>
+                    <h3 class="blog-title">Understanding the Feasts of Elohim</h3>
                     <p class="blog-excerpt">
-                        Discover the profound meaning behind Yahweh's appointed times and how they point to Messiah...
+                        Discover the profound meaning behind Elohim's appointed times and how they point to Messiah...
                     </p>
                     <a href="#" class="read-more">Read More</a>
                 </div>
@@ -1373,7 +1333,7 @@
             
             <!-- Blog Post 2 -->
             <div class="blog-item">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
                      alt="Youth group" class="blog-image">
                 <div class="blog-content">
                     <div class="blog-meta">
@@ -1394,7 +1354,7 @@
             
             <!-- Blog Post 3 -->
             <div class="blog-item">
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
                      alt="Prayer" class="blog-image">
                 <div class="blog-content">
                     <div class="blog-meta">
