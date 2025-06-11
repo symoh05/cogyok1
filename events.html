@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - COGYOK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: rgb(9, 176, 206);
+            --primary-dark: #1a6a7e;
+            --secondary: rgb(2, 29, 39);
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 30px;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Exo 2", sans-serif;
+            color: var(--dark);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Exo 2", sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s ease-in-out;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background: transparent;
+            transition: background 0.4s, backdrop-filter 0.4s;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+        
+        header.scrolled {
+            background: rgba(2,29,39,0.85);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .desktop-nav a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .desktop-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            z-index: 1001;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .hamburger:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .events-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .events-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .events-hero-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .events-hero-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: rgb(9, 176, 206);
+            animation: fadeInUp 1s ease;
+        }
+
+        .events-hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-height: 0;
+            background-color: rgba(2,29,39,0.95);
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+
+        .mobile-menu.scrolled {
+            background-color: rgba(255,255,255,0.95);
+        }
+        
+        .mobile-menu.scrolled a {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu.scrolled a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu.scrolled .menu-section h3 {
+            color: var(--primary);
+        }
+
+        .mobile-menu-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .menu-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+
+        .events-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            color: var(--primary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .event-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.05);
+        }
+
+        .event-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .event-date i {
+            margin-right: 8px;
+        }
+
+        .event-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .event-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .event-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+        }
+
+        .event-location i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+
+        .event-btn {
+            align-self: flex-start;
+            margin-top: 15px;
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .calendar-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: var(--primary);
+            color: white;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .calendar-nav-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calendar-nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .calendar-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .calendar-day-header {
+            padding: 15px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--secondary);
+            background: var(--light-gray);
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            min-height: 100px;
+            border: 1px solid #dee2e6;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .calendar-day:hover {
+            background: #f8f9fa;
+        }
+
+        .day-number {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .calendar-event {
+            background: rgba(9, 176, 206, 0.1);
+            color: var(--primary-dark);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 3px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calendar-event:hover {
+            background: rgba(9, 176, 206, 0.2);
+        }
+
+        .other-month {
+            background: #f8f9fa;
+            color: #adb5bd;
+        }
+
+        .today {
+            background: rgba(9, 176, 206, 0.05);
+            position: relative;
+        }
+
+        .today::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Upcoming Events */
+        .upcoming-section {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+
+        .upcoming-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .upcoming-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .upcoming-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .upcoming-date {
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .upcoming-date .day {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .upcoming-date .month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .upcoming-content {
+            padding: 20px;
+        }
+
+        .upcoming-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .upcoming-time {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .upcoming-time i {
+            margin-right: 8px;
+        }
+
+        .upcoming-location {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .upcoming-location i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+
+        .upcoming-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: 60px 0;
+            background: linear-gradient(rgba(2, 29, 39, 0.85), rgba(2, 29, 39, 0.9)), url('https://images.unsplash.com/photo-1542403779-5f47710f4bf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-text {
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background: #1a6a7e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgb(2, 29, 39);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+            font-family: "Exo 2", sans-serif;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-about {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 900px) {
+            .events-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Show desktop nav and hide hamburger */
+            .desktop-nav {
+                display: block;
+            }
+            
+            .hamburger {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .events-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .events-hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .events-hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-container {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                border-radius: var(--border-radius);
+                margin-bottom: 10px;
+            }
+
+            .newsletter-btn {
+                border-radius: var(--border-radius);
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 40px 0;
+            }
+
+            .events-hero-title {
+                font-size: 1.8rem;
+            }
+
+            .events-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .calendar-day {
+                min-height: 70px;
+                padding: 5px;
+            }
+
+            .calendar-event {
+                font-size: 0.7rem;
+                padding: 2px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">COGYOK <span>Kiambu</span></a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="torah-study.html">Torah Study</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-container">
+            <div class="menu-section">
+                <h3>Navigation</h3>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="our-story.html"><i class="fas fa-history"></i> Our Story</a>
+                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="blog.html"><i class="fas fa-newspaper"></i> Blog</a>
+            </div>
+            <div class="menu-section">
+                <h3>Connect</h3>
+                <a href="torah-study.html"><i class="fas fa-torah"></i> Torah Study</a>
+                <a href="serve.html"><i class="fas fa-hands-helping"></i> Serve</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="events-hero">
+        <div class="events-hero-overlay"></div>
+        <div class="events-hero-content">
+            <h1 class="events-hero-title">Upcoming Events</h1>
+            <h2 class="events-hero-subtitle">Join us for worship, fellowship and growth</h2>
+        </div>
+    </section>
+
+    <section class="events-section">
+        <div class="container">
+            <h2 class="section-title">Featured Events</h2>
+            <div class="events-tabs">
+                <button class="tab-btn active" data-filter="all">All Events</button>
+                <button class="tab-btn" data-filter="shabbat">Shabbat</button>
+                <button class="tab-btn" data-filter="feasts">Feasts</button>
+                <button class="tab-btn" data-filter="outreach">Outreach</button>
+                <button class="tab-btn" data-filter="study">Bible Study</button>
+            </div>
+            
+            <div class="events-container">
+                <!-- Event 1 -->
+                <div class="event-card" data-category="shabbat">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Shabbat Gathering">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i> June 15, 2025 | 10:00 AM
+                        </div>
+                        <h3 class="event-title">Shabbat Morning Service</h3>
+                        <p class="event-excerpt">Join us for our weekly Shabbat service featuring worship, Torah reading, and teaching. This week we'll be studying Parashat Shelach.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> COGYOK Youth Center
+                            </div>
+                            <div class="event-category shabbat">Shabbat</div>
+                        </div>
+                        <a href="#" class="btn event-btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="event-card" data-category="feasts">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80" alt="Shavuot Celebration">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i> June 22-23, 2025
+                        </div>
+                        <h3 class="event-title">Shavuot Celebration</h3>
+                        <p class="event-excerpt">All-night study session followed by morning service and festive meal. Come celebrate the giving of the Torah at Mount Sinai!</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> COGYOK Youth Center
+                            </div>
+                            <div class="event-category feasts">Feast</div>
+                        </div>
+                        <a href="#" class="btn event-btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="event-card" data-category="outreach">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1515168833906-d2a3b82b3029?auto=format&fit=crop&w=600&q=80" alt="Community Outreach">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i> July 5, 2025 | 8:00 AM
+                        </div>
+                        <h3 class="event-title">Community Service Day</h3>
+                        <p class="event-excerpt">We'll be serving our local community through various projects including feeding the homeless, visiting the elderly, and neighborhood clean-up.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> Meet at COGYOK
+                            </div>
+                            <div class="event-category outreach">Outreach</div>
+                        </div>
+                        <a href="#" class="btn event-btn">Sign Up</a>
+                    </div>
+                </div>
+                
+                <!-- Event 4 -->
+                <div class="event-card" data-category="study">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Bible Study">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">
+                            <i class="fas fa-calendar-alt"></i> Every Tuesday | 6:00 PM
+                        </div>
+                        <h3 class="event-title">Midweek Bible Study</h3>
+                        <p class="event-excerpt">Deep dive into Scripture with our weekly Bible study. Currently studying the Book of Acts and the early Messianic community.</p>
+                        <div class="event-meta">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> COGYOK Youth Center
+                            </div>
+                            <div class="event-category study">Bible Study</div>
+                        </div>
+                        <a href="#" class="btn event-btn">Join Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <div class="container">
+            <h2 class="section-title">Event Calendar</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="calendar-nav-btn" id="prevMonth">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="calendar-title" id="calendarTitle">June 2025</div>
+                    <button class="calendar-nav-btn" id="nextMonth">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day-header">Sun</div>
+                    <div class="calendar-day-header">Mon</div>
+                    <div class="calendar-day-header">Tue</div>
+                    <div class="calendar-day-header">Wed</div>
+                    <div class="calendar-day-header">Thu</div>
+                    <div class="calendar-day-header">Fri</div>
+                    <div class="calendar-day-header">Sat</div>
+                    
+                    <!-- Calendar days will be populated by JavaScript -->
+                    <div id="calendarDays"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="upcoming-section">
+        <div class="container">
+            <h2 class="section-title">This Month's Highlights</h2>
+            <div class="upcoming-list">
+                <!-- Event 1 -->
+                <div class="upcoming-item">
+                    <div class="upcoming-date">
+                        <div class="day">15</div>
+                        <div class="month">Jun</div>
+                    </div>
+                    <div class="upcoming-content">
+                        <h3 class="upcoming-title">Shabbat Service</h3>
+                        <div class="upcoming-time">
+                            <i class="fas fa-clock"></i> 10:00 AM - 1:00 PM
+                        </div>
+                        <div class="upcoming-location">
+                            <i class="fas fa-map-marker-alt"></i> COGYOK Youth Center
+                        </div>
+                        <p class="upcoming-excerpt">Join us for worship, Torah reading, and fellowship as we study Parashat Shelach.</p>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="upcoming-item">
+                    <div class="upcoming-date">
+                        <div class="day">22</div>
+                        <div class="month">Jun</div>
+                    </div>
+                    <div class="upcoming-content">
+                        <h3 class="upcoming-title">Shavuot Night Study</h3>
+                        <div class="upcoming-time">
+                            <i class="fas fa-clock"></i> 8:00 PM - 6:00 AM
+                        </div>
+                        <div class="upcoming-location">
+                            <i class="fas fa-map-marker-alt"></i> COGYOK Youth Center
+                        </div>
+                        <p class="upcoming-excerpt">All-night Torah study session in preparation for Shavuot morning service.</p>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="upcoming-item">
+                    <div class="upcoming-date">
+                        <div class="day">29</div>
+                        <div class="month">Jun</div>
+                    </div>
+                    <div class="upcoming-content">
+                        <h3 class="upcoming-title">Youth Fellowship</h3>
+                        <div class="upcoming-time">
+                            <i class="fas fa-clock"></i> 4:00 PM - 7:00 PM
+                        </div>
+                        <div class="upcoming-location">
+                            <i class="fas fa-map-marker-alt"></i> Central Park
+                        </div>
+                        <p class="upcoming-excerpt">Outdoor games, worship, and fellowship for all youth members.</p>
+                        <a href="#" class="btn">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <h2 class="newsletter-title">Stay Updated</h2>
+                <p class="newsletter-text">Subscribe to our newsletter to receive updates about upcoming events, special programs, and community announcements.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <a href="index.html" class="footer-logo">COG<span>YOK</span></a>
+                <p class="footer-about">
+                    COGYOK is the vibrant youth ministry of COGMERS, dedicated to raising up a generation passionate about Yahshua Messiah and the Torah.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="our-story.html"><i class="fas fa-chevron-right"></i> Our Story</a></li>
+                    <li><a href="events.html"><i class="fas fa-chevron-right"></i> Events</a></li>
+                    <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                    <li><a href="ministries.html"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+                    <li><a href="privacy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i> +254 7XX XXX XXX
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> info@cogyok.org
+                </div>
+                <div class="contact-item">
+                    <i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 5:00 PM
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="currentYear"></span> COGYOK. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const header = document.querySelector('header');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    hamburger.querySelector('i').classList.toggle('fa-bars');
+                    hamburger.querySelector('i').classList.toggle('fa-times');
+                });
+
+                // Close mobile menu when a link is clicked
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        hamburger.querySelector('i').classList.add('fa-bars');
+                        hamburger.querySelector('i').classList.remove('fa-times');
+                    });
+                });
+            }
+
+            // Header scroll effect
+            function onScroll() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                    mobileMenu.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                    mobileMenu.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+
+            // Event filtering
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const eventCards = document.querySelectorAll('.event-card');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    eventCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Calendar functionality
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+            const calendarTitle = document.getElementById('calendarTitle');
+            const calendarDays = document.getElementById('calendarDays');
+            
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+            
+            function renderCalendar(month, year) {
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                const startingDay = firstDay.getDay();
+                
+                const monthNames = ["January", "February", "March", "April", "May", "June", 
+                                   "July", "August", "September", "October", "November", "December"];
+                
+                calendarTitle.textContent = `${monthNames[month]} ${year}`;
+                
+                let daysHtml = '';
+                
+                // Previous month's days
+                const prevMonthLastDay = new Date(year, month, 0).getDate();
+                for (let i = startingDay; i > 0; i--) {
+                    daysHtml += `<div class="calendar-day other-month">${prevMonthLastDay - i + 1}</div>`;
+                }
+                
+                // Current month's days
+                const today = new Date();
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayDate = new Date(year, month, i);
+                    const isToday = dayDate.getDate() === today.getDate() && 
+                                    dayDate.getMonth() === today.getMonth() && 
+                                    dayDate.getFullYear() === today.getFullYear();
+                    
+                    let dayHtml = `<div class="calendar-day ${isToday ? 'today' : ''}">`;
+                    dayHtml += `<div class="day-number">${i}</div>`;
+                    
+                    // Add sample events (in a real app, these would come from a database)
+                    if (i === 15) {
+                        dayHtml += `<div class="calendar-event">Shabbat Service</div>`;
+                    }
+                    if (i === 22) {
+                        dayHtml += `<div class="calendar-event">Shavuot</div>`;
+                    }
+                    if (i === 5 || i === 12 || i === 19 || i === 26) {
+                        dayHtml += `<div class="calendar-event">Bible Study</div>`;
+                    }
+                    
+                    dayHtml += `</div>`;
+                    daysHtml += dayHtml;
+                }
+                
+                // Next month's days
+                const daysToShow = 42 - (daysInMonth + startingDay); // 6 rows of 7 days
+                for (let i = 1; i <= daysToShow; i++) {
+                    daysHtml += `<div class="calendar-day other-month">${i}</div>`;
+                }
+                
+                calendarDays.innerHTML = daysHtml;
+            }
+            
+            prevMonthBtn.addEventListener('click', function() {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+            
+            nextMonthBtn.addEventListener('click', function() {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+            
+            // Initialize calendar
+            renderCalendar(currentMonth, currentYear);
+            
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+  </html>
