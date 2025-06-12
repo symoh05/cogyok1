@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - COGYOK Messianic Youth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: rgb(9, 176, 206);
+            --primary-dark: #1a6a7e;
+            --secondary: rgb(2, 29, 39);
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 30px;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Exo 2", sans-serif;
+            color: var(--dark);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Exo 2", sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s ease-in-out;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background: transparent;
+            transition: background 0.4s, backdrop-filter 0.4s;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+        
+        header.scrolled {
+            background: rgba(2,29,39,0.85);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .desktop-nav a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .desktop-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            z-index: 1001;
+            transition: var(--transition);
+            display: block;
+            border: 2px solid gray;
+            border-radius: 8px;
+            padding: 1px 10px;
+            background: transparent;
+        }
+
+        .hamburger:hover {
+            color: var(--primary);
+        }
+
+        /* Blog Hero Section */
+        .blog-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .blog-hero-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .blog-hero-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: rgb(9, 176, 206);
+            animation: fadeInUp 1s ease;
+        }
+
+        .blog-hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-height: 0;
+            background-color: rgba(2,29,39,0.95);
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+
+        .mobile-menu.scrolled {
+            background-color: rgba(255,255,255,0.95);
+        }
+        
+        .mobile-menu.scrolled a {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu.scrolled a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu.scrolled .menu-section h3 {
+            color: var(--primary);
+        }
+
+        .mobile-menu-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .menu-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Blog Content */
+        .blog-content-section {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .blog-image {
+            height: 200px; /* Reduced from 250px */
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-details {
+            padding: 20px; /* Reduced from 30px */
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px; /* Reduced from 15px */
+            font-size: 0.85rem; /* Reduced from 0.9rem */
+            color: var(--gray);
+            flex-wrap: wrap;
+            gap: 12px; /* Reduced from 15px */
+        }
+
+        .blog-date, .blog-author, .blog-category {
+            display: flex;
+            align-items: center;
+        }
+
+        .blog-date i, .blog-author i, .blog-category i {
+            margin-right: 6px; /* Reduced from 8px */
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .blog-title {
+            font-size: 1.3rem; /* Reduced from 1.5rem */
+            color: var(--secondary);
+            margin-bottom: 12px; /* Reduced from 15px */
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px; /* Reduced from 20px */
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .blog-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px; /* Reduced from 40px */
+            flex-wrap: wrap;
+            gap: 8px; /* Reduced from 10px */
+        }
+
+        .category-btn {
+            padding: 6px 15px; /* Reduced from 8px 20px */
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            color: var(--primary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px; /* Reduced from 50px */
+            gap: 8px; /* Reduced from 10px */
+        }
+
+        .page-btn {
+            width: 36px; /* Reduced from 40px */
+            height: 36px; /* Reduced from 40px */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .page-btn.active,
+        .page-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Sidebar Styles */
+        .blog-sidebar {
+            order: 2; /* Move sidebar below main content on mobile */
+            margin-top: 40px;
+        }
+
+        .sidebar-widget {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .sidebar-widget h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        .search-form {
+            display: flex;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-family: inherit;
+        }
+
+        .search-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+        }
+
+        .popular-posts {
+            display: grid;
+            gap: 15px;
+        }
+
+        .popular-post {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .popular-post:hover {
+            color: var(--primary);
+        }
+
+        .popular-post-thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .popular-post-title {
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .categories-list {
+            list-style: none;
+        }
+
+        .categories-list li {
+            margin-bottom: 8px;
+        }
+
+        .categories-list a {
+            color: var(--gray);
+            transition: color 0.3s;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .categories-list a:hover {
+            color: var(--primary);
+        }
+
+        .weekly-scripture {
+            font-style: italic;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .scripture-reference {
+            text-align: right;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 60px 0;
+            background: linear-gradient(rgba(2, 29, 39, 0.85), rgba(2, 29, 39, 0.9)), url('https://images.unsplash.com/photo-1542403779-5f47710f4bf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-text {
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background: #1a6a7e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgb(2, 29, 39);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+            font-family: "Exo 2", sans-serif;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-about {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 2fr 1fr;
+                gap: 30px;
+                align-items: flex-start;
+            }
+            
+            .blog-sidebar {
+                order: initial; /* Reset order for desktop */
+                margin-top: 0;
+                position: sticky;
+                top: 100px;
+            }
+            
+            /* Show desktop nav and hide hamburger */
+            .desktop-nav {
+                display: block;
+            }
+            
+            .hamburger {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .blog-hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .blog-hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-container {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                border-radius: var(--border-radius);
+                margin-bottom: 10px;
+            }
+
+            .newsletter-btn {
+                border-radius: var(--border-radius);
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 40px 0;
+            }
+
+            .blog-hero-title {
+                font-size: 1.8rem;
+            }
+
+            .blog-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .blog-image {
+                height: 180px; /* Even more compact on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">COGYOK <span>Kiambu</span></a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="blogs.html" class="active">Blog</a></li>
+                    <li><a href="torah-study.html">Torah Study</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-container">
+            <div class="menu-section">
+                <h3>Navigation</h3>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="our-story.html"><i class="fas fa-history"></i> Our Story</a>
+                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="blogs.html"><i class="fas fa-newspaper"></i> Blog</a>
+            </div>
+            <div class="menu-section">
+                <h3>Connect</h3>
+                <a href="torah-study.html"><i class="fas fa-torah"></i> Torah Study</a>
+                <a href="serve.html"><i class="fas fa-hands-helping"></i> Serve</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="blog-hero">
+        <div class="blog-hero-overlay"></div>
+        <div class="blog-hero-content">
+            <h1 class="blog-hero-title">COGYOK Blog</h1>
+            <h2 class="blog-hero-subtitle">Insights, Teachings, and Encouragement for Messianic Youth</h2>
+        </div>
+    </section>
+
+    <section class="blog-content-section">
+        <div class="container">
+            <div class="blog-categories">
+                <button class="category-btn active" data-category="all">All Posts</button>
+                <button class="category-btn" data-category="torah">Torah Study</button>
+                <button class="category-btn" data-category="messianic">Messianic Living</button>
+                <button class="category-btn" data-category="prayer">Prayer & Devotion</button>
+                <button class="category-btn" data-category="community">Community</button>
+            </div>
+
+            <div class="blog-grid">
+                <div class="blog-main">
+                    <!-- Blog Post 1 -->
+                    <div class="blog-card" data-category="torah">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Torah scroll">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <span class="blog-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+                                <span class="blog-author"><i class="fas fa-user"></i> Elder James</span>
+                                <span class="blog-category"><i class="fas fa-tag"></i> Torah Study</span>
+                            </div>
+                            <h3 class="blog-title">Understanding the Feasts of Elohim</h3>
+                            <p class="blog-excerpt">
+                                Discover the profound meaning behind Elohim's appointed times and how they point to Messiah. In this study, we explore the biblical feasts and their significance for believers today, showing how each one reveals aspects of Yahshua's ministry and our walk with Him.
+                            </p>
+                            <a href="blog-post.html" class="btn">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 2 -->
+                    <div class="blog-card" data-category="messianic">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Worship gathering">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <span class="blog-date"><i class="far fa-calendar-alt"></i> June 8, 2025</span>
+                                <span class="blog-author"><i class="fas fa-user"></i> Sister Miriam</span>
+                                <span class="blog-category"><i class="fas fa-tag"></i> Messianic Living</span>
+                            </div>
+                            <h3 class="blog-title">Embracing Our Hebraic Heritage</h3>
+                            <p class="blog-excerpt">
+                                What does it mean to live as a Messianic believer in today's world? This post explores practical ways to incorporate Hebraic roots into our daily walk with Messiah, from keeping Shabbat to understanding the biblical calendar, while maintaining our focus on Yahshua.
+                            </p>
+                            <a href="blog-post.html" class="btn">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 3 -->
+                    <div class="blog-card" data-category="prayer">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80" alt="Prayer hands">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <span class="blog-date"><i class="far fa-calendar-alt"></i> June 1, 2025</span>
+                                <span class="blog-author"><i class="fas fa-user"></i> Brother Daniel</span>
+                                <span class="blog-category"><i class="fas fa-tag"></i> Prayer & Devotion</span>
+                            </div>
+                            <h3 class="blog-title">The Power of Persistent Prayer</h3>
+                            <p class="blog-excerpt">
+                                Prayer is our lifeline to the Father, yet many believers struggle to maintain a consistent prayer life. Learn biblical principles of effective prayer, how to overcome common obstacles, and practical tips for developing a deeper, more meaningful prayer practice.
+                            </p>
+                            <a href="blog-post.html" class="btn">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 4 -->
+                    <div class="blog-card" data-category="community">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&q=80" alt="Youth group">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <span class="blog-date"><i class="far fa-calendar-alt"></i> May 25, 2025</span>
+                                <span class="blog-author"><i class="fas fa-user"></i> Sister Ruth</span>
+                                <span class="blog-category"><i class="fas fa-tag"></i> Community</span>
+                            </div>
+                            <h3 class="blog-title">Building Authentic Messianic Community</h3>
+                            <p class="blog-excerpt">
+                                In a world of superficial connections, how do we cultivate genuine biblical fellowship? This post explores the principles of Acts 2 community, practical ways to deepen relationships within the body of Messiah, and how to create a welcoming environment for newcomers.
+                            </p>
+                            <a href="blog-post.html" class="btn">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="pagination">
+                        <a href="#" class="page-btn"><i class="fas fa-chevron-left"></i></a>
+                        <a href="#" class="page-btn active">1</a>
+                        <a href="#" class="page-btn">2</a>
+                        <a href="#" class="page-btn">3</a>
+                        <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h3>Search Blog</h3>
+                        <form class="search-form">
+                            <input type="text" placeholder="Search posts..." class="search-input">
+                            <button type="submit" class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3>Popular Posts</h3>
+                        <div class="popular-posts">
+                            <a href="#" class="popular-post">
+                                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=100&q=80" alt="Post thumbnail" class="popular-post-thumb">
+                                <span class="popular-post-title">The Power of Persistent Prayer</span>
+                            </a>
+                            <a href="#" class="popular-post">
+                                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=100&q=80" alt="Post thumbnail" class="popular-post-thumb">
+                                <span class="popular-post-title">Embracing Our Hebraic Heritage</span>
+                            </a>
+                            <a href="#" class="popular-post">
+                                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=100&q=80" alt="Post thumbnail" class="popular-post-thumb">
+                                <span class="popular-post-title">Building Authentic Community</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <ul class="categories-list">
+                            <li>
+                                <a href="#">
+                                    <span>Torah Study</span>
+                                    <span>(12)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Messianic Living</span>
+                                    <span>(8)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Prayer & Devotion</span>
+                                    <span>(5)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Community</span>
+                                    <span>(7)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Youth Topics</span>
+                                    <span>(10)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3>Weekly Scripture</h3>
+                        <p class="weekly-scripture">
+                            "Trust in Yahweh with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths."
+                        </p>
+                        <p class="scripture-reference">
+                            — Proverbs 3:5-6
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <h2 class="newsletter-title">Stay Updated</h2>
+                <p class="newsletter-text">Subscribe to our newsletter to receive new blog posts, event updates, and spiritual encouragement directly to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">COGYOK <span>Kiambu</span></a>
+                    <p class="footer-about">
+                        A Messianic community dedicated to serving Yeshua (Jesus) while embracing our Hebraic roots. 
+                        We gather to worship, study Torah, and build meaningful relationships.
+                    </p>
+
+<div class="social-links">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="footer-col footer-links">
+    <h3>Quick Links</h3>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="blogs.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
+<div class="footer-col footer-contact">
+    <h3>Contact</h3>
+    <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Kiambu, Kenya</span>
+    </div>
+    <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>info@cogyok.org</span>
+    </div>
+    <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>+254 700 000 000</span>
+    </div>
+</div>
+</div>
+<div class="copyright">
+    &copy; 2025 COGYOK Messianic Youth. All rights reserved.
+</div>
+</div>
+</footer>
+
+<script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+    });
+
+    // Header background on scroll
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 30) {
+            header.classList.add('scrolled');
+            mobileMenu.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+            mobileMenu.classList.remove('scrolled');
+        }
+    });
+
+    // Blog category filter (optional, if you want filtering)
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const category = this.getAttribute('data-category');
+            document.querySelectorAll('.blog-card').forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
