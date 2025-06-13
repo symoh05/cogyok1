@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COGYOK - COGMERS Messianic Youth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: rgb(9, 176, 206);
+            --primary-dark: #1a6a7e;
+            --secondary: rgb(2, 29, 39);
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 30px;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Exo 2", sans-serif;
+            color: var(--dark);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Exo 2", sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s ease-in-out;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background: transparent;
+            transition: background 0.4s, backdrop-filter 0.4s;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+        
+        header.scrolled {
+            background: rgba(2,29,39,0.85);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .desktop-nav a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .desktop-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            z-index: 1001;
+            transition: var(--transition);
+            display: block;
+             border: 2px solid gray;
+    border-radius: 8px;
+    padding: 1px 10px;
+    background: transparent;
+        }
+
+        .hamburger:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Updated hero-bg-container for slide animation */
+        .hero-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        /* New hero-slide class for individual slides */
+        .hero-slide {
+            position: relative;
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 3;
+        }
+
+        .hero-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            z-index: 4;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            position: relative;
+            padding-left: 20px;
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .hero-text.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .hero-text::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: rgb(9, 176, 206);
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.6s ease 0.4s;
+        }
+
+        .hero-title.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            transform: translateX(-30px);
+            opacity: 0;
+            transition: all 0.6s ease 0.6s;
+        }
+
+        .hero-subtitle.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.8);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease 0.8s;
+            max-width: 500px;
+        }
+
+        .hero-description.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .hero-btn {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease 1s;
+            align-self: center;
+        }
+
+        .hero-btn.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Slide Indicators */
+        .slide-indicators {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background-color: var(--primary);
+            transform: scale(1.3);
+        }
+
+        /* Progress Bar */
+        .hero-progress-bar {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.15);
+            z-index: 20;
+            overflow: hidden;
+        }
+        
+        .hero-progress {
+            height: 100%;
+            width: 0%;
+            background: var(--primary, #09b0ce);
+            transition: width 5s linear;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-height: 0;
+            background-color: rgba(2,29,39,0.95);
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+
+        .mobile-menu.scrolled {
+            background-color: rgba(255,255,255,0.95);
+        }
+        
+        .mobile-menu.scrolled a {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu.scrolled a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu.scrolled .menu-section h3 {
+            color: var(--primary);
+        }
+
+        .mobile-menu-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .menu-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+
+        .welcome-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .welcome-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .welcome-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .welcome-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .welcome-content h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .welcome-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .welcome-features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .events-list-rect {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .event-rect {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: none;
+            border: 1px solid rgb(204, 199, 199);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: box-shadow 0.22s cubic-bezier(.4,2,.3,1), transform 0.22s cubic-bezier(.4,2,.3,1);
+            cursor: pointer;
+            touch-action: manipulation;
+            will-change: box-shadow, transform;
+        }
+
+        .event-rect:hover,
+        .event-rect:active {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.11);
+            transform: translateY(-2px) scale(1.008);
+        }
+
+        .event-rect-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            object-fit: cover;
+            display: block;
+            transition: border-radius 0.2s;
+            box-shadow: none;
+        }
+
+        .event-rect-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 18px 22px 22px 22px;
+            min-width: 0;
+        }
+
+        .event-rect-title {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 6px;
+            font-family: "Exo 2", sans-serif;
+            font-weight: 600;
+        }
+
+        .event-rect-date {
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .event-rect-date i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .event-rect-desc {
+            color: var(--gray);
+            font-size: 0.97rem;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            max-width: 420px;
+        }
+
+        .event-rect-btn {
+            align-self: flex-start;
+            font-size: 0.93rem;
+            padding: 7px 18px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgb(2, 29, 39);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+            font-family: "Exo 2", sans-serif;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-about {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 900px) {
+            .events-list-rect {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+            
+            .event-rect-img {
+                height: 200px;
+                border-radius: 8px;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+            
+            /* Show desktop nav and hide hamburger */
+            .desktop-nav {
+                display: block;
+            }
+            
+            .hamburger {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .welcome-container,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-image {
+                order: -1;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 100vh; /* Changed from 80vh to 100vh */
+                min-height: 500px;
+            }
+
+            .hero-content {
+                padding: 0 5%;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .mobile-menu-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">COGYOK <span>Kiambu</span></a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="story">Our Story</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="blogs.html">Blog</a></li>
+                    <li><a href="bible-study.html">Bible Study</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-container">
+            <div class="menu-section">
+                <h3>Navigation</h3>
+                <a href="#"><i class="fas fa-home"></i> Home</a>
+                <a href="story.html"><i class="fas fa-users"></i> Our Story</a>
+                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="blogs.html"><i class="fas fa-newspaper"></i> Blog</a>
+            </div>
+            <div class="menu-section">
+                <h3>Connect</h3>
+                <a href="#"><i class="fas fa-bible"></i> Bible Study</a>
+                <a href="#"><i class="fas fa-hands-helping"></i> Serve</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="#"><i class="fas fa-question-circle"></i> FAQs</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-bg-container" id="heroBgContainer">
+            <div class="hero-slide" data-slide="0" style="background-image: url('main.png')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Following Yahshua Together</h1>
+                        <h2 class="hero-subtitle">Messianic Youth Ministry of COGMERS</h2>
+                        <p class="hero-description">A vibrant community of young believers walking in the truth of Scripture, keeping the commandments, and proclaiming Yahshua as Messiah.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" data-slide="1" style="background-image: url('main.png')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Growing in Torah & Grace</h1>
+                        <h2 class="hero-subtitle">Embracing Our Hebraic Roots</h2>
+                        <p class="hero-description">We are passionate about understanding the full counsel of Elohim, from Genesis to Revelation, through the lens of Messiah.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" data-slide="2" style="background-image: url('main.png')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Building Lasting Friendships</h1>
+                        <h2 class="hero-subtitle">Community in Messiah</h2>
+                        <p class="hero-description">Connect with like-minded youth, build strong bonds, and support each other on your spiritual journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Progress Bar -->
+        <div class="hero-progress-bar">
+            <div class="hero-progress" id="heroProgress"></div>
+        </div>
+    </section>
+
+    <section class="welcome section">
+        <div class="container">
+            <div class="welcome-container">
+                <div class="welcome-content">
+                    <h2>Welcome to COGYOK</h2>
+                    <p>We are a passionate community of young believers dedicated to following Yahshua Messiah our savior. Our ministry provides a safe space for youth to grow spiritually, build meaningful relationships, and discover their purpose in the Kingdom.</p>
+                    
+                    <div class="welcome-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-bible"></i></div>
+                            <div>
+                                <h4>Bible Teaching</h4>
+                                <p>Discover Yahshua and walk in obedience to Scripture</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-hands-praying"></i></div>
+                            <div>
+                                <h4>Authentic Worship</h4>
+                                <p>Experience heartfelt worship</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-user-friends"></i></div>
+                            <div>
+                                <h4>Genuine Community</h4>
+                                <p>Build lasting friendships with like-minded believers</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#about" class="btn">Our Story</a>
+                </div>
+                <div class="welcome-image">
+                    <img src="main.png" alt="Youth group worship">
+                </div>
+            </div>
+        </div>
+    </section>
+<style>
+    /* Compact Quote Section Styles */
+    .quote-section {
+        padding: 40px 0;
+        background-color: #f8f9fa;
+    }
+    
+    .quote-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    .quote-box {
+        position: relative;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 0;
+        box-shadow: 6px 6px 0 rgba(0,0,0,0.1), 
+                    12px 12px 0 rgba(0,0,0,0.05),
+                    0 0 0 1px rgba(0,0,0,0.1);
+        margin: 20px auto;
+        max-width: 550px;
+        border: 1px solid #e9ecef;
+    }
+    
+    .quote-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 8px;
+        background-color: #09b0ce;
+        opacity: 0.7;
+    }
+    
+    .quote-icon {
+        font-size: 1.8rem;
+        color: rgba(9, 176, 206, 0.2);
+        margin-bottom: 15px;
+    }
+    
+    .weekly-quote {
+        font-family: "Edu VIC WA NT Hand Pre", cursive;
+        font-size: 1.4rem;
+        line-height: 1.4;
+        color: #212529;
+        margin-bottom: 15px;
+        font-weight: 500;
+        position: relative;
+        padding-left: 15px;
+    }
+    
+    .weekly-quote::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: #09b0ce;
+    }
+    
+    .quote-author {
+        font-family: "Exo 2", sans-serif;
+        font-size: 1rem;
+        color: #1a6a7e;
+        font-weight: 500;
+        text-align: right;
+        margin-bottom: 15px;
+    }
+    
+    .quote-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+    
+    .share-quote {
+        background-color: #09b0ce;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 3px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "Exo 2", sans-serif;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+    
+    .share-quote:hover {
+        background-color: #1a6a7e;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .quote-section {
+            padding: 30px 0;
+        }
+        
+        .weekly-quote {
+            font-size: 1.2rem;
+        }
+        
+        .quote-box {
+            padding: 20px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .weekly-quote {
+            font-size: 1.1rem;
+        }
+        
+        .quote-box {
+            padding: 15px;
+        }
+        
+        .quote-icon {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Share quote functionality
+        const shareButton = document.querySelector('.share-quote');
+        if (shareButton) {
+            shareButton.addEventListener('click', function() {
+                const quote = document.querySelector('.weekly-quote').textContent;
+                const author = document.querySelector('.quote-author').textContent;
+                const shareText = `${quote} ${author}`;
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Inspirational Quote',
+                        text: shareText,
+                        url: window.location.href
+                    }).catch(err => {
+                        console.log('Error sharing:', err);
+                        fallbackShare(shareText);
+                    });
+                } else {
+                    fallbackShare(shareText);
+                }
+            });
+        }
+        
+        function fallbackShare(shareText) {
+            navigator.clipboard.writeText(shareText).then(() => {
+                alert('Quote copied to clipboard!');
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+                window.open(`mailto:?subject=Inspirational Quote&body=${encodeURIComponent(shareText)}`);
+            });
+        }
+    });
+</script>
+
+<section class="quote-section">
+    <div class="quote-container">
+        <h2 class="section-title">Weekly Inspiration</h2>
+        <div class="quote-box">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <blockquote class="weekly-quote">
+                "Trust in Elohim with all your heart and lean not on your own understanding."
+            </blockquote>
+            <div class="quote-author">— Proverbs 3:5</div>
+            <div class="quote-actions">
+                <button class="share-quote">
+                    <i class="fas fa-share"></i> Share
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="events section" id="events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-list-rect">
+                <!-- Event 1 -->
+                <div class="event-rect">
+                    <div class="event-rect-img" style="background-image: url('main.png');"></div>
+                    <div class="event-rect-content">
+                        <h3 class="event-rect-title">Shabbat Gathering</h3>
+                        <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> June 15, 2025</div>
+                        <p class="event-rect-desc">
+                            Join us for a joyful Shabbat celebration with worship, Bible reading, and fellowship. All youth welcome!
+                        </p>
+                        <a href="#" class="btn event-rect-btn">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Event 2 -->
+                <div class="event-rect">
+                    <div class="event-rect-img" style="background-image: url('main.png');"></div>
+                    <div class="event-rect-content">
+                        <h3 class="event-rect-title">Youth Retreat</h3>
+                        <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> July 20-22, 2025</div>
+                        <p class="event-rect-desc">
+                            A weekend of adventure, worship, and spiritual growth in the great outdoors. Register now—spaces are limited!
+                        </p>
+                        <a href="#" class="btn event-rect-btn">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Event 3 -->
+                <div class="event-rect">
+                    <div class="event-rect-img" style="background-image: url('main.png');"></div>
+                    <div class="event-rect-content">
+                        <h3 class="event-rect-title">Community Outreach</h3>
+                        <div class="event-rect-date"><i class="fas fa-calendar-alt"></i> August 10, 2025</div>
+                        <p class="event-rect-desc">
+                            Serve with us as we share love and practical help with our neighbors. All hands and hearts needed!
+                        </p>
+                        <a href="#" class="btn event-rect-btn">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<style>
+   /* Updated Blog Section Styles */
+.blog-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.blog-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.blog-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px; /* Reduced gap */
+}
+
+.blog-item {
+    display: flex;
+    background: none;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 125px; /* Reduced height by half from original 250px */
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.blog-image {
+    width: 125px; /* Reduced width by half */
+    height: 100%; /* Full height of container */
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 8px; /* Left side rounded */
+}
+
+.blog-content {
+    padding: 15px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.blog-meta {
+    display: flex;
+    gap: 10px; /* Reduced gap */
+    margin-bottom: 5px; /* Reduced margin */
+    font-size: 0.75rem; /* Smaller font */
+    color: #6c757d;
+}
+
+.blog-date, .blog-author {
+    display: flex;
+    align-items: center;
+    gap: 3px; /* Reduced gap */
+}
+
+.blog-date i, .blog-author i {
+    color: #09b0ce;
+}
+
+.blog-title {
+    font-size: 1rem; /* Smaller font */
+    margin-bottom: 5px; /* Reduced margin */
+    color: #212529;
+    font-weight: 600;
+}
+
+.blog-excerpt {
+    color: #495057;
+    margin-bottom: 10px; /* Reduced margin */
+    line-height: 1.4; /* Tighter line height */
+    flex: 1;
+    font-size: 0.85rem; /* Smaller font */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more {
+    align-self: flex-start;
+    padding: 5px 12px; /* Smaller button */
+    background-color: #09b0ce;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem; /* Smaller font */
+    transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: #1a6a7e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .blog-item {
+        height: 110px; /* Slightly smaller */
+    }
+    
+    .blog-image {
+        width: 110px; /* Slightly smaller */
+    }
+    
+    .blog-content {
+        padding: 12px;
+    }
+    
+    .blog-title {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .blog-section {
+        padding: 40px 0;
+    }
+    
+    .blog-item {
+        height: 100px; /* Even smaller */
+    }
+    
+    .blog-image {
+        width: 100px; /* Even smaller */
+    }
+    
+    .blog-content {
+        padding: 10px;
+    }
+    
+    .blog-title {
+        font-size: 0.9rem;
+    }
+    
+    .blog-excerpt {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 1; /* Only 1 line on smallest screens */
+    }
+    
+    .blog-meta {
+        font-size: 0.7rem;
+        gap: 8px;
+    }
+    
+    .read-more {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+}
+
+</style>
+
+<section class="blog-section">
+    <div class="blog-container">
+        <h2 class="section-title">Latest Blog Posts</h2>
+        <div class="blog-list">
+            <!-- Blog Post 1 -->
+            <div class="blog-item">
+                <img src="main.png"
+                     alt="Torah study" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">
+                            <i class="far fa-calendar-alt"></i> June 15, 2025
+                        </span>
+                        <span class="blog-author">
+                            <i class="fas fa-user"></i> James Maina
+                        </span>
+                    </div>
+                    <h3 class="blog-title">Understanding the Feasts of Elohim</h3>
+                    <p class="blog-excerpt">
+                        Discover the profound meaning behind Elohim's appointed times and how they point to Messiah...
+                    </p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <!-- Blog Post 2 -->
+            <div class="blog-item">
+                <img src="main.png" 
+                     alt="Youth group" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">
+                            <i class="far fa-calendar-alt"></i> June 8, 2025
+                        </span>
+                        <span class="blog-author">
+                            <i class="fas fa-user"></i> Miriam Muthoni
+                        </span>
+                    </div>
+                    <h3 class="blog-title">Building Authentic Community</h3>
+                    <p class="blog-excerpt">
+                        Learn how to cultivate deep, meaningful relationships within the body of Messiah...
+                    </p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <!-- Blog Post 3 -->
+            <div class="blog-item">
+                <img src="main.png" 
+                     alt="Prayer" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">
+                            <i class="far fa-calendar-alt"></i> June 1, 2025
+                        </span>
+                        <span class="blog-author">
+                            <i class="fas fa-user"></i> Daniel Njoroge
+                        </span>
+                    </div>
+                    <h3 class="blog-title">The Power of Persistent Prayer</h3>
+                    <p class="blog-excerpt">
+                        Explore biblical principles of effective prayer and how to develop a consistent prayer life...
+                    </p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <a href="#" class="footer-logo">COGYOK<span> Kiambu</span></a>
+                <p class="footer-about">
+                    COGYOK Kiambu is the vibrant youth ministry of COGMERS(Kiambu), dedicated to raising up a generation passionate about Yahshua Messiah.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#events"><i class="fas fa-chevron-right"></i> Events</a></li>
+                    <li><a href="#blog"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Ministries</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i> +254 111 000 000
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> info@cogyokkiambu.org
+                </div>
+                <div class="contact-item">
+                    <i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 5:00 PM
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="currentYear"></span> COGYOK. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const header = document.querySelector('header');
+            const hero = document.querySelector('.hero');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                    hamburger.querySelector('i').classList.toggle('fa-bars');
+                    hamburger.querySelector('i').classList.toggle('fa-times');
+                });
+
+                // Close mobile menu when a link is clicked
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        hamburger.querySelector('i').classList.add('fa-bars');
+                        hamburger.querySelector('i').classList.remove('fa-times');
+                    });
+                });
+            }
+
+            // Hero Slider
+            const heroBgContainer = document.getElementById('heroBgContainer');
+            const slides = document.querySelectorAll('.hero-slide');
+            const heroTexts = document.querySelectorAll('.hero-text');
+            const progressBar = document.getElementById('heroProgress');
+            let currentSlide = 0;
+            let intervalId;
+
+            // Duplicate slides for infinite effect
+            for (let i = 0; i < slides.length; i++) {
+                const clone = slides[i].cloneNode(true);
+                heroBgContainer.appendChild(clone);
+            }
+            const allSlides = document.querySelectorAll('.hero-slide');
+
+            function updateSlider() {
+                heroBgContainer.style.transition = 'transform 1s ease-in-out';
+                heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+                // Animate text content for the active slide (original slides only)
+                const activeIndex = currentSlide % slides.length;
+                heroTexts.forEach((text, idx) => {
+                    if (idx === activeIndex) {
+                        text.classList.add('active');
+                        text.querySelector('.hero-title').classList.add('active');
+                        text.querySelector('.hero-subtitle').classList.add('active');
+                        text.querySelector('.hero-description').classList.add('active');
+                    } else {
+                        text.classList.remove('active');
+                        text.querySelector('.hero-title').classList.remove('active');
+                        text.querySelector('.hero-subtitle').classList.remove('active');
+                        text.querySelector('.hero-description').classList.remove('active');
+                    }
+                });
+
+                // Infinite loop effect
+                if (currentSlide >= slides.length) {
+                    setTimeout(() => {
+                        heroBgContainer.style.transition = 'none';
+                        currentSlide = currentSlide % slides.length;
+                        heroBgContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                        setTimeout(() => {
+                            heroBgContainer.style.transition = 'transform 1s ease-in-out';
+                        }, 50);
+                    }, 1000);
+                }
+            }
+
+            function animateProgressBar() {
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '0%';
+                setTimeout(() => {
+                    progressBar.style.transition = 'width 5s linear';
+                    progressBar.style.width = '100%';
+                }, 30);
+            }
+
+            function nextSlideWithProgress() {
+                currentSlide++;
+                updateSlider();
+                animateProgressBar();
+            }
+
+            function startSliderWithProgress() {
+                animateProgressBar();
+                intervalId = setInterval(() => {
+                    nextSlideWithProgress();
+                }, 5000);
+            }
+
+            function resetSliderWithProgress() {
+                clearInterval(intervalId);
+                startSliderWithProgress();
+            }
+
+            // Start slider and progress bar
+            updateSlider();
+            startSliderWithProgress();
+
+            // Header scroll effect and mobile menu background
+            function onScroll() {
+                const heroBottom = hero.getBoundingClientRect().bottom;
+                if (heroBottom <= 0) {
+                    header.classList.add('scrolled');
+                    mobileMenu.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                    mobileMenu.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
