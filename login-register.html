@@ -381,105 +381,103 @@
 <body>
    
    
+<div class="auth-container">
+    <div class="auth-image"></div>
+    <div class="auth-content">
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="login">Login</div>
+                <div class="auth-tab" data-tab="register">Register</div>
+            </div>
 
-    <div class="auth-container">
-        <div class="auth-image"></div>
-        <div class="auth-content">
-            <div class="auth-box">
-                <div class="auth-tabs">
-                    <div class="auth-tab active" data-tab="register">Register</div>
-                    <div class="auth-tab" data-tab="login">Login</div>
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label for="loginEmail" class="form-label">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
                 </div>
 
-                <!-- Registration Form -->
-                <form id="registerForm" class="auth-form active">
-                    <div class="form-group">
-                        <label for="fullName" class="form-label">Full Name</label>
-                        <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                <div class="form-group">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                </div>
+
+                <a href="#" class="forgot-password">Forgot password?</a>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+
+                <div class="auth-footer">
+                    Don't have an account? <a href="#" class="switch-tab" data-tab="register">Register here</a>
+                </div>
+            </form>
+
+            <!-- Registration Form -->
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Create a password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Profile Photo</label>
+                    <div class="file-upload" id="fileUpload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span class="file-upload-text">Click to upload profile photo</span>
+                        <input type="file" id="profilePhoto" accept="image/*">
+                        <img id="previewImage" class="preview-image" src="#" alt="Preview">
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                    </div>
+                <div class="form-group">
+                    <label for="status" class="form-label">Role</label>
+                    <select id="status" class="form-select" required>
+                        <option value="" disabled selected>Select your Role In COGYOK Kiambu</option>
+                        <option value="member">Member</option>
+                        <option value="leader">Leader</option>
+                    </select>
+                </div>
 
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
-                    </div>
+                <div class="form-group" id="positionGroup" style="display: none;">
+                    <label for="position" class="form-label">Position</label>
+                    <select id="position" class="form-select">
+                        <option value="" disabled selected>Select your position</option>
+                        <option value="chairman">Chairman</option>
+                        <option value="vice_chair">Vice Chairman</option>
+                        <option value="secretary">Secretary</option>
+                        <option value="treasurer">Treasurer</option>
+                        <option value="office_bearer">Office Bearer</option>
+                    </select>
+                </div>
 
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" id="password" class="form-control" placeholder="Create a password" required>
-                    </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
 
-                    <div class="form-group">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Profile Photo</label>
-                        <div class="file-upload" id="fileUpload">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <span class="file-upload-text">Click to upload profile photo</span>
-                            <input type="file" id="profilePhoto" accept="image/*">
-                            <img id="previewImage" class="preview-image" src="#" alt="Preview">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="status" class="form-label">Role</label>
-                        <select id="status" class="form-select" required>
-                            <option value="" disabled selected>Select your Role In COGYOK Kiambu</option>
-                            <option value="member">Member</option>
-                            <option value="leader">Leader</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group" id="positionGroup" style="display: none;">
-                        <label for="position" class="form-label">Position</label>
-                        <select id="position" class="form-select">
-                            <option value="" disabled selected>Select your position</option>
-                            <option value="chairman">Chairman</option>
-                            <option value="vice_chair">Vice Chairman</option>
-                            <option value="secretary">Secretary</option>
-                            <option value="treasurer">Treasurer</option>
-                            <option value="office_bearer">Office Bearer</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
-
-                    <div class="auth-footer">
-                        Already have an account? <a href="#" class="switch-tab" data-tab="login">Login here</a>
-                    </div>
-                </form>
-
-                <!-- Login Form -->
-                <form id="loginForm" class="auth-form">
-                    <div class="form-group">
-                        <label for="loginEmail" class="form-label">Email Address</label>
-                        <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="loginPassword" class="form-label">Password</label>
-                        <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
-                    </div>
-
-                    <a href="#" class="forgot-password">Forgot password?</a>
-
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
-
-                    <div class="auth-footer">
-                        Don't have an account? <a href="#" class="switch-tab" data-tab="register">Register here</a>
-                    </div>
-                </form>
-            </div>
+                <div class="auth-footer">
+                    Already have an account? <a href="#" class="switch-tab" data-tab="login">Login here</a>
+                </div>
+            </form>
         </div>
     </div>
-
+</div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile Menu Toggle
