@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COGYOK - Register/Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: rgb(9, 176, 206);
+            --primary-dark: #1a6a7e;
+            --secondary: rgb(2, 29, 39);
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 30px;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Exo 2", sans-serif;
+            color: var(--dark);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Exo 2", sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s ease-in-out;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background: rgba(2,29,39,0.85);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        /* Auth Container */
+        .auth-container {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 80px;
+            background-color: var(--light);
+        }
+
+        .auth-image {
+            flex: 1;
+            background-image: url('main1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: none;
+            height: auto;
+            border-radius: 30px;
+            margin-left: 40px;
+            margin-top: 35px;
+            justify-self: center;
+        }
+
+        .auth-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .auth-box {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .auth-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+        }
+
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: "Exo 2", sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 176, 206, 0.2);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: "Exo 2", sans-serif;
+            font-size: 1rem;
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 176, 206, 0.2);
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 2px dashed var(--light-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .file-upload-text {
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .preview-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 10px auto;
+            display: none;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+
+        .auth-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (min-width: 992px) {
+            .auth-image {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .auth-content {
+                padding: 20px;
+            }
+            
+            .auth-box {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-box {
+                padding: 20px;
+            }
+            
+            .auth-tab {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+   
+
+    <div class="auth-container">
+        <div class="auth-image"></div>
+        <div class="auth-content">
+            <div class="auth-box">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="register">Register</div>
+                    <div class="auth-tab" data-tab="login">Login</div>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="registerForm" class="auth-form active">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Create a password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Profile Photo</label>
+                        <div class="file-upload" id="fileUpload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span class="file-upload-text">Click to upload profile photo</span>
+                            <input type="file" id="profilePhoto" accept="image/*">
+                            <img id="previewImage" class="preview-image" src="#" alt="Preview">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status" class="form-label">Role</label>
+                        <select id="status" class="form-select" required>
+                            <option value="" disabled selected>Select your Role In COGYOK Kiambu</option>
+                            <option value="member">Member</option>
+                            <option value="leader">Leader</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="positionGroup" style="display: none;">
+                        <label for="position" class="form-label">Position</label>
+                        <select id="position" class="form-select">
+                            <option value="" disabled selected>Select your position</option>
+                            <option value="chairman">Chairman</option>
+                            <option value="vice_chair">Vice Chairman</option>
+                            <option value="secretary">Secretary</option>
+                            <option value="treasurer">Treasurer</option>
+                            <option value="office_bearer">Office Bearer</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+
+                    <div class="auth-footer">
+                        Already have an account? <a href="#" class="switch-tab" data-tab="login">Login here</a>
+                    </div>
+                </form>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail" class="form-label">Email Address</label>
+                        <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                    </div>
+
+                    <a href="#" class="forgot-password">Forgot password?</a>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+
+                    <div class="auth-footer">
+                        Don't have an account? <a href="#" class="switch-tab" data-tab="register">Register here</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                    hamburger.querySelector('i').classList.toggle('fa-bars');
+                    hamburger.querySelector('i').classList.toggle('fa-times');
+                });
+
+                // Close mobile menu when a link is clicked
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        hamburger.querySelector('i').classList.add('fa-bars');
+                        hamburger.querySelector('i').classList.remove('fa-times');
+                    });
+                });
+            }
+
+            // Tab Switching
+            const tabs = document.querySelectorAll('.auth-tab');
+            const forms = document.querySelectorAll('.auth-form');
+            const switchTabLinks = document.querySelectorAll('.switch-tab');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and forms
+                    tabs.forEach(t => t.classList.remove('active'));
+                    forms.forEach(f => f.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding form
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(`${tabId}Form`).classList.add('active');
+                });
+            });
+
+            switchTabLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = link.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and forms
+                    tabs.forEach(t => t.classList.remove('active'));
+                    forms.forEach(f => f.classList.remove('active'));
+                    
+                    // Add active class to target tab and form
+                    document.querySelector(`.auth-tab[data-tab="${tabId}"]`).classList.add('active');
+                    document.getElementById(`${tabId}Form`).classList.add('active');
+                });
+            });
+
+            // Profile Photo Upload
+            const fileUpload = document.getElementById('fileUpload');
+            const profilePhoto = document.getElementById('profilePhoto');
+            const previewImage = document.getElementById('previewImage');
+
+            fileUpload.addEventListener('click', () => {
+                profilePhoto.click();
+            });
+
+            profilePhoto.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        previewImage.style.display = 'block';
+                        fileUpload.querySelector('.file-upload-text').textContent = 'Change photo';
+                    }
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+
+            // Show/hide position field based on status
+            const statusSelect = document.getElementById('status');
+            const positionGroup = document.getElementById('positionGroup');
+
+            statusSelect.addEventListener('change', function() {
+                if (this.value === 'leader') {
+                    positionGroup.style.display = 'block';
+                    document.getElementById('position').setAttribute('required', '');
+                } else {
+                    positionGroup.style.display = 'none';
+                    document.getElementById('position').removeAttribute('required');
+                }
+            });
+
+            // Form Submission
+            const registerForm = document.getElementById('registerForm');
+            const loginForm = document.getElementById('loginForm');
+
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would handle the registration logic
+                alert('Registration successful!');
+            });
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would handle the login logic
+                alert('Login successful!');
+            });
+        });
+    </script>
+</body>
+</html>
